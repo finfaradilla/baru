@@ -1,60 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Peminjaman Ruangan Kampus" />
-    <meta name="keywords" content="Peminjaman Ruangan Kampus" />
-    <meta name="theme-color" content="#1A374D" />
-    <link rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/dashboard.css" />
-    <link rel="stylesheet" href="/css/responsive.css" />
-    <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="stylesheet" href="/css/landingPage.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/admin.css">
+    {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" /> --}}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    {{-- 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" /> --}}
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>{{ $title }} | Universitas Teknokrat Indonesia</title>
     <link rel="website icon" href="img/UNIVERSITAS TEKNOKRAT.png">
 </head>
 
 <body>
-    @include('dashboard.partials.navbar')
 
-    <main>
-        <div class="row m-0 sidebar-container">
+    <div class="screen-cover d-none d-xl-none"></div>
+
+    <div class="row">
+        <div class="col-12 col-lg-3 col-navbar d-none d-xl-block">
+
             @include('dashboard.partials.sidebar')
 
-            @yield('container')
         </div>
-    </main>
-    @include('dashboard.partials.footer')
+
+
+        <div class="col-12 col-xl-9">
+            @include('dashboard.partials.navbar')
+
+            @yield('container')
+
+        </div>
+    </div>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/js/index.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
     <script>
-        $('#datatable').DataTable({
-            columnDefs: [{
-                targets: '_all',
-                className: 'dt-head-center'
-            }]
-        });
-        $('#datatable_length').css('text-align', 'left');
-        $('#datatable_info').css('text-align', 'left');
+        const navbar = document.querySelector('.col-navbar')
+        const cover = document.querySelector('.screen-cover')
+
+        const sidebar_items = document.querySelectorAll('.sidebar-item')
+
+        function toggleNavbar() {
+            navbar.classList.toggle('d-none')
+            cover.classList.toggle('d-none')
+        }
+
+        function toggleActive(e) {
+            sidebar_items.forEach(function(v, k) {
+                v.classList.remove('active')
+            })
+            e.closest('.sidebar-item').classList.add('active')
+
+        }
     </script>
-    {{-- Room Edit Modal --}}
-    <script src="/js/editroom.js"></script>
-    <script src="/js/edituser.js"></script>
-    <script src="/js/editadmin.js"></script>
 </body>
 
 </html>

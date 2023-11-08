@@ -70,7 +70,7 @@
                         <input type="button" class="btn button text-white" value="Filter" id="datebtn">
                         <input type="button" class="btn button text-white" value="Reset" id="datereset">
                         <!-- <input type="date" class="form-control" id="tgl-pinjam-detail" style="width: 50%; display: inline-block;">
-                                            <button class="input-group-text btn btn-primary" id="submit-detail-filter">Filter</button> -->
+                                                    <button class="input-group-text btn btn-primary" id="submit-detail-filter">Filter</button> -->
                     </div>
                 </div>
 
@@ -104,8 +104,6 @@
                 </table>
             </div>
         </div>
-    </div>
-    <!-- Main Content -->
     </div>
     @extends('dashboard.partials.rentModal')
 @endsection

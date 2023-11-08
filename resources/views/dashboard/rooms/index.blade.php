@@ -45,8 +45,10 @@
                         @foreach ($rooms as $room)
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
+
                                 <td><a href="/dashboard/rooms/{{ $room->code }}" class="text-decoration-none"
                                         role="button">{{ $room->name }}</a></td>
+
                                 <td>{{ $room->code }}</td>
                                 @if (auth()->user()->role_id <= 2)
                                     <td style="font-size: 22px;">

@@ -1,4 +1,4 @@
-@extends('layouts.login')
+@extends('layouts.main')
 
 @section('container')
     <!-- Start Hero -->

@@ -1,50 +1,50 @@
-<!-- Start Navbar -->
-<header class="header d-flex justify-content-center">
-    <div class="header_content d-flex flex-row align-items-center">
-        <a href="#">
-            <div class="logo_container">
-                <div class="logo">
-                    <img src="img/logo-uti.png" style="width: 150px;" alt="LOGO" />
-                </div>
-            </div>
-        </a>
-        <div class="main_nav_container">
-            <div class="main_nav">
-                <ul class="main_nav_list">
-                    <li class="main_nav_item {{ Request::is('') ? '' : 'active' }}">
-                        <a href="/">Beranda</a>
-                    </li>
-
-                    <li class="main_nav_item {{ Request::is('help') ? 'active' : '' }}">
-                        <a href="/help">Bantuan</a>
-                    </li>
-                    @auth
-                        <li class="main_nav_item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Welcome back, {{ auth()->user()->name }}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/dashboard/rooms"><i
-                                            class="bi bi-layout-text-sidebar-reverse"></i> My Dashboard</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <form action="/logout" method="post">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
-                                            Logout</button>
-                                    </form>
-                            </ul>
-                        </li>
-                    @else
-                        <li class="main_nav_item {{ Request::is('login') ? 'active' : '' }}">
-                            <a href="/login">Login</a>
-                        </li>
-                    @endauth
-                </ul>
-            </div>
-        </div>
-</header>
-<!-- End Navbar -->
+ <!--====== HEADER PART START ======-->
+ <header class="header_area">
+     <div id="header_navbar" class="header_navbar">
+         <div class="container">
+             <div class="row align-items-center">
+                 <div class="col-xl-12">
+                     <nav class="navbar navbar-expand-lg">
+                         <a class="navbar-brand" href="index.html">
+                             <img id="logo" src="{{ asset('img/logo-uti.png') }}" alt="Logo">
+                         </a>
+                         <button class="navbar-toggler" type="button" data-toggle="collapse"
+                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                             aria-expanded="false" aria-label="Toggle navigation">
+                             <span class="toggler-icon"></span>
+                             <span class="toggler-icon"></span>
+                             <span class="toggler-icon"></span>
+                         </button>
+                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                             <ul id="nav" class="navbar-nav ml-auto">
+                                 <li class="nav-item">
+                                     <a href="/" class="text-warning">Home</a>
+                                 </li>
+                                 @auth
+                                     <li class="nav-item">
+                                         <a href="/daftarruang" class="text-warning">Daftar Ruang</a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a href="/daftarpinjam" class="text-warning">Daftar Peminjaman</a>
+                                     </li>
+                                     <form action="/logout" method="post">
+                                         @csrf
+                                         <button type="submit"
+                                             class="btn border border-warning rounded-pill text-warning "><i
+                                                 class="bi bi-box-arrow-right"></i>
+                                             Logout</button>
+                                     </form>
+                                 @else
+                                     <li class="nav-item">
+                                         <a class="header-btn btn-hover" href="/login">Login</a>
+                                     </li>
+                                 @endauth
+                             </ul>
+                         </div> <!-- navbar collapse -->
+                     </nav> <!-- navbar -->
+                 </div>
+             </div> <!-- row -->
+         </div> <!-- container -->
+     </div> <!-- header navbar -->
+ </header>
+ <!--====== HEADER PART ENDS ======-->

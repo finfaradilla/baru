@@ -15,21 +15,43 @@ class LoginController extends Controller
         ]);
     }
 
+    // public function authenticate(Request $request)
+    // {
+    //     $credentials = $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required'
+    //     ]);
+
+    //     if (Auth::attempt($credentials)) {
+    //         $request->session()->regenerate();
+
+    //         return redirect()->intended('/');
+    //     }
+
+    //     return back()->with('loginError', 'Gagal melakukan proses autentikasi. Mohon untuk mengisi email & password dengan benar.');
+    // }
+
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
+    
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('/dashboard/rooms');
+    
+            $user = Auth::user();
+            if ($user->role_id === 2) { 
+                return redirect()->intended('/dashboard/admin');
+            } elseif ($user->role_id === 5) { 
+                return redirect()->intended('/');
+            }
         }
-
+    
         return back()->with('loginError', 'Gagal melakukan proses autentikasi. Mohon untuk mengisi email & password dengan benar.');
     }
+    
 
     public function logout(Request $request)
     {

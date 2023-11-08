@@ -2,13 +2,18 @@
 
 namespace App;
 
+use App\Models\Room;
+use App\Models\Building;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardRentController;
-use App\Http\Controllers\DashboardUserController;
-use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\DashboardRoomController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\DaftarRuangController;
+use App\Http\Controllers\DaftarPinjamController;
+use App\Http\Controllers\DashboardRentController;
+use App\Http\Controllers\DashboardRoomController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\TemporaryRentController;
+use App\Http\Controllers\DashboardAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,8 +58,11 @@ Route::get('/dashboard/temporaryRents/{id}/acceptRents', [TemporaryRentControlle
 
 Route::get('/dashboard/temporaryRents/{id}/declineRents', [TemporaryRentController::class, 'declineRents'])->middleware('auth');
 
-Route::get('/help', function () {
-    return view('help', [
-        'title' => "Help",
-    ]);
-});
+// Route::resource('/daftarruang', RuanganController::class)->middleware('auth');
+
+Route::get('/daftarruang', [DaftarRuangController::class, 'index'])->middleware('auth');
+
+Route::get('/showruang/{room:code}', [DaftarRuangController::class, 'show'])->middleware('auth');
+
+Route::get('/daftarpinjam', [DaftarPinjamController::class, 'index'])->middleware('auth');
+
