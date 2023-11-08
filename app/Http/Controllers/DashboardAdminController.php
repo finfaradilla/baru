@@ -15,7 +15,7 @@ class DashboardAdminController extends Controller
     public function index()
     {
         return view('dashboard.admin.index', [
-            'title' => "Admin",
+            'title' => "Daftar Admin",
             'admins' => User::where('role_id', 2)->get(),
             'users' => User::where('role_id', '>', 2)->get(),
         ]);

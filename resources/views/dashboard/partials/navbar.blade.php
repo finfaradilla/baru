@@ -4,7 +4,7 @@
             <button id="toggle-navbar" onclick="toggleNavbar()">
                 <img src="/assets/burger.svg" class="mb-2" alt="">
             </button>
-            <h2 class="nav-title">Dashboard</h2>
+            <h2 class="nav-title">{{ $title }}</h2>
         </div>
     </div>
     {{-- @auth

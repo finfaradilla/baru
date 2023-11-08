@@ -31,6 +31,11 @@ Route::get('/', function () {
         'title' => "Home",
     ]);
 });
+Route::get('/dashboard/overview', function () {
+    return view('/dashboard/overview/index', [
+        'title' => "Dashboard Admin",
+    ]);
+});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
@@ -41,6 +46,8 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('dashboard/rents/{id}/endTransaction', [DashboardRentController::class, 'endTransaction'])->middleware('auth');
 
 Route::resource('dashboard/rents', DashboardRentController::class)->middleware('auth');
+
+Route::resource('/daftarpinjam', DashboardRentController::class)->middleware('auth');
 
 Route::resource('dashboard/rooms', DashboardRoomController::class)->middleware('auth');
 

@@ -11,8 +11,7 @@ class DaftarPinjamController extends Controller
     public function index()
     {
         return view('daftarpinjam', [
-            'adminRents' => Rent::latest()->get(),
-            'userRents' => Rent::where('user_id', auth()->user()->id)->get(),
+            'userRents' => Rent::where('user_id', auth()->user()->id)->latest()->paginate(5),
             'title' => "Daftar Pinjam",
             'rooms' => Room::all(),
         ]);

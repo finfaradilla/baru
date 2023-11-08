@@ -39,23 +39,48 @@ class DashboardRentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'room_id' => 'required',
+    //         'time_start_use' => 'required',
+    //         'time_end_use' => 'required',
+    //         'purpose' => 'required|max:250',
+    //     ]);
+    //     $validatedData['user_id'] = auth()->user()->id;
+    //     $validatedData['transaction_start'] = now();
+    //     $validatedData['status'] = 'pending';
+    //     $validatedData['transaction_end'] = null;
+
+    //     Rent::create($validatedData);
+
+    //     return redirect('/dashboard/rents')->with('rentSuccess', 'Peminjaman diajukan. Harap tunggu konfirmasi admin.');
+    // }
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'room_id' => 'required',
-            'time_start_use' => 'required',
-            'time_end_use' => 'required',
-            'purpose' => 'required|max:250',
-        ]);
-        $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['transaction_start'] = now();
-        $validatedData['status'] = 'pending';
-        $validatedData['transaction_end'] = null;
+{
+    $validatedData = $request->validate([
+        'room_id' => 'required',
+        'time_start_use' => 'required',
+        'time_end_use' => 'required',
+        'purpose' => 'required|max:250',
+    ]);
+    $validatedData['user_id'] = auth()->user()->id;
+    $validatedData['transaction_start'] = now();
+    $validatedData['status'] = 'pending';
+    $validatedData['transaction_end'] = null;
 
-        Rent::create($validatedData);
+    Rent::create($validatedData);
 
+    // Periksa peran pengguna
+    if (auth()->user()->role_id === 2) {
+        // Admin
         return redirect('/dashboard/rents')->with('rentSuccess', 'Peminjaman diajukan. Harap tunggu konfirmasi admin.');
+    } elseif (auth()->user()->role_id === 5) {
+        // User
+        return redirect('/daftarpinjam')->with('rentSuccess', 'Peminjaman diajukan. Harap tunggu konfirmasi admin.');
     }
+}
+
 
     /**
      * Display the specified resource.

@@ -14,7 +14,7 @@
 
 
     @if (auth()->user()->role_id <= 2)
-        <a href="#" class="sidebar-item ,mxss9" onclick="toggleActive(this)">
+        <a href="/dashboard/overview" class="sidebar-item ,mxss9" onclick="toggleActive(this)">
             <!-- <img src="./assets/img/global/grid.svg" alt=""> -->
 
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@
                     d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z"
                     stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            <span>Daftar User</span>
+            <span>Daftar Mahasiswa</span>
         </a>
 
         <a href="/dashboard/rooms" class="sidebar-item {{ Request::is('dashboard/rooms') ? 'active' : '' }}"

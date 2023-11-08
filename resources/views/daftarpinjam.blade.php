@@ -25,7 +25,11 @@
                             </div>
                         @endif
 
+
                         <div class="table-responsive justify-content-center">
+                            <div class="d-flex justify-content-end">
+                                {{ $userRents->links() }}
+                            </div>
                             <table class="fl-table">
                                 <thead>
                                     <tr>
@@ -60,9 +64,15 @@
                                             <td>{{ $rent->purpose }}</td>
                                             <td>{{ $rent->transaction_start }}</td>
                                             @if ($rent->status == 'dipinjam')
-                                                <td><a href="/dashboard/rents/{{ $rent->id }}/endTransaction"
-                                                        class="btn btn-success" type="submit" style="padding: 2px 10px"><i
-                                                            class="bi bi-check fs-5"></i></a>
+                                                <td><a href="/daftarpinjam{{ $rent->id }}/endTransaction"
+                                                        class="btn btn-success" type="submit" style="padding: 2px 10px">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="16" fill="currentColor" class="bi bi-check-lg"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                                                        </svg>
+                                                    </a>
                                                 </td>
                                             @else
                                                 @if (!is_null($rent->transaction_end))
@@ -76,6 +86,7 @@
                                     @endforeach
                                 <tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>

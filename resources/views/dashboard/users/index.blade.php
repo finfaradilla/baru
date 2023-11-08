@@ -2,7 +2,6 @@
 
 @section('container')
     <div class="col-md-10 p-0">
-        <h2 class="content-title text-center">Daftar {{ $title }}</h2>
         <div class="card-body text-end">
             @if (session()->has('userSuccess'))
                 <div class="col-md-16 mx-auto alert alert-success text-center  alert-success alert-dismissible fade show"
@@ -19,7 +18,7 @@
                 </div>
             @endif
             <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal" data-bs-target="#addUser">
-                Tambah User
+                Tambah Mahasiswa
             </button>
             <div class="table-responsive">
                 <table class="table table-hover table-stripped table-bordered text-center">

@@ -2,7 +2,6 @@
 
 @section('container')
     <div class="col-md-10 p-0">
-        <h2 class="content-title text-center">Daftar {{ $title }}</h2>
         <div class="card-body text-end">
             @if (session()->has('rentSuccess'))
                 <div class="col-md-16 mx-auto alert alert-success text-center  alert-success alert-dismissible fade show"

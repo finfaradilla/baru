@@ -2,7 +2,6 @@
 
 @section('container')
     <div class="col-md-10 p-0">
-        <h2 class="content-title text-center">Daftar {{ $title }}</h2>
         <div class="card-body text-end">
             @if (session()->has('roomSuccess'))
                 <div class="col-md-16 mx-auto alert alert-success text-center  alert-success alert-dismissible fade show"
@@ -57,8 +56,7 @@
                                             data-id="{{ $room->id }}" data-code="{{ $room->code }}"
                                             data-bs-toggle="modal" data-bs-target="#editRoom"></a>
                                         &nbsp;
-                                        <form action="/dashboard/rooms/{{ $room->code }}" method="post"
-                                            class="d-inline">
+                                        <form action="/dashboard/rooms/{{ $room->code }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="bi bi-trash-fill text-danger border-0"

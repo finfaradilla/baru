@@ -17,7 +17,7 @@ class DashboardRoomController extends Controller
     public function index()
     {
         return view('dashboard.rooms.index', [
-            'title' => "Ruangan",
+            'title' => "Daftar Ruangan",
             'rooms' => Room::latest()->paginate(10),
             'buildings' => Building::all(),
         ]);
