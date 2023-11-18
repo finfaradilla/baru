@@ -75,11 +75,19 @@ class DashboardRoomController extends Controller
      */
     public function show(Room $room)
     {
+        $imageUrls = [
+            asset('img/lab-komputer.jpeg'),
+            asset('img/lab-praktikum.jpeg'),
+            asset('img/ruang-kelas.jpeg'),
+        ];
+        $randomImage = $imageUrls[array_rand($imageUrls)];
+
         return view('dashboard.rooms.show', [
             'title' => $room->name,
             'room' => $room,
             'rooms' => Room::all(),
             'rents' => Rent::where('room_id', $room->id)->get(),
+            'randomImage' => $randomImage, 
         ]);
     }
 

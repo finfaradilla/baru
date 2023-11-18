@@ -42,9 +42,9 @@ class LoginController extends Controller
             $request->session()->regenerate();
     
             $user = Auth::user();
-            if ($user->role_id === 2) { 
+            if ($user->role_id === 1) { 
                 return redirect()->intended('/dashboard/admin');
-            } elseif ($user->role_id === 5) { 
+            } elseif ($user->role_id === 2) { 
                 return redirect()->intended('/');
             }
         }

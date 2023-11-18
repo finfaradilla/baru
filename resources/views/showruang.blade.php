@@ -4,7 +4,7 @@
     <!--====== Show Ruang ======-->
     <section id="blog" class="container blog-area pt-170 pb-140">
         <div>
-            <div class="row align-items-center">
+            <div class="row align-items-center ">
                 <div class="col-xl-6 col-lg-6">
                     <div class="welcome-content">
                         <div class="section-title">
@@ -85,17 +85,15 @@
                                     </td>
                                 </tr>
                             </table>
-                            @if (auth()->user()->role_id <= 5)
-                                <button type="button" class="btn btn-primary read-more-btn wow fadeInUp mt-20"
-                                    data-bs-toggle="modal" data-bs-target="#pinjamRuangan" data-wow-delay=".5s">Pinjam <i
-                                        class="lni lni-arrow-right"></i></button>
-                            @endif
+                            <button type="button" class="btn btn-primary read-more-btn wow fadeInUp mt-20"
+                                data-bs-toggle="modal" data-bs-target="#pinjamRuangan" data-wow-delay=".5s">Pinjam <i
+                                    class="lni lni-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="welcome-img">
-                        <img src="{{ $randomImage }}" alt="Random Image">
+                        <img style="width: 500px" src="{{ $randomImage }}" alt="Random Image">
                     </div>
                 </div>
             </div>
@@ -105,6 +103,9 @@
         <!-- Table -->
         <div class="card-body text-end me-3">
             <div class="table-responsive justify-content-center">
+                <div class="d-flex justify-content-start">
+                    {{ $rents->links() }}
+                </div>
                 <table class="fl-table">
                     <thead>
                         <tr>
@@ -118,17 +119,26 @@
                         </tr>
                     </thead>
                     <tbody class="rent-details">
-                        @foreach ($rents as $rent)
-                            <tr class="rent-detail">
-                                <th scope="row">{{ $loop->iteration }}</th scope="row">
-                                <td>{{ $rent->user->name }}</td>
-                                <td class="detail-rent-room_start-time">{{ $rent->time_start_use }}</td>
-                                <td>{{ $rent->time_end_use }}</td>
-                                <td>{{ $rent->purpose }}</td>
-                                <td>{{ $rent->transaction_start }}</td>
-                                <td>{{ $rent->status }}</td>
+
+                        @if ($rents->count() > 0)
+                            @foreach ($rents as $rent)
+                                <tr class="rent-detail">
+                                    <th scope="row">{{ $loop->iteration }}</th scope="row">
+                                    <td>{{ $rent->user->name }}</td>
+                                    <td class="detail-rent-room_start-time">{{ $rent->time_start_use }}</td>
+                                    <td>{{ $rent->time_end_use }}</td>
+                                    <td>{{ $rent->purpose }}</td>
+                                    <td>{{ $rent->transaction_start }}</td>
+                                    <td>{{ $rent->status }}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    -- Belum Ada Peminjaman --
+                                </td>
                             </tr>
-                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

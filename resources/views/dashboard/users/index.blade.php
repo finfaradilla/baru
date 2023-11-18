@@ -17,10 +17,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal" data-bs-target="#addUser">
-                Tambah Mahasiswa
-            </button>
+
+            @if (auth()->user()->role_id === 1)
+                <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal" data-bs-target="#addUser">
+                    Tambah Mahasiswa
+                </button>
+            @endif
             <div class="table-responsive">
+                <div class="d-flex justify-content-start">
+                    {{ $users->links() }}
+                </div>
                 <table class="table table-hover table-stripped table-bordered text-center">
                     <thead class="table-info">
                         <tr>
@@ -40,27 +46,29 @@
                                 <td>{{ $user->nomor_induk }} </td>
                                 <td>{{ $user->email }} </td>
                                 <td>{{ $user->role->name }} </td>
-                                <td style="font-size: 22px;">
-                                    <a href="/dashboard/users/{{ $user->id }}/edit" class="edituser" id="edituser"
-                                        data-id="{{ $user->id }}" data-bs-toggle="modal" data-bs-target="#edituser"><i
-                                            class="bi bi-pencil-square text-warning"></i></a>&nbsp;
-                                    <a href="/dashboard/users/{{ $user->id }}/makeAdmin" class="makeadmin"
-                                        id="makeadmin"><i class="bi bi-person-plus-fill"></i></a>&nbsp;
-                                    <form action="/dashboard/users/{{ $user->id }}" method="post" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="bi bi-trash-fill text-danger border-0"
-                                            onclick="return confirm('Hapus data user?')"></button>
-                                    </form>
-                                </td>
+                                @if (auth()->user()->role_id === 1)
+                                    <td style="font-size: 22px;">
+                                        <a href="/dashboard/users/{{ $user->id }}/edit" class="edituser" id="edituser"
+                                            data-id="{{ $user->id }}" data-bs-toggle="modal"
+                                            data-bs-target="#edituser"><i
+                                                class="bi bi-pencil-square text-warning"></i></a>&nbsp;
+                                        <a href="/dashboard/users/{{ $user->id }}/makeAdmin" class="makeadmin"
+                                            id="makeadmin"><i class="bi bi-person-plus-fill"></i></a>&nbsp;
+                                        <form action="/dashboard/users/{{ $user->id }}" method="post"
+                                            class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="bi bi-trash-fill text-danger border-0"
+                                                onclick="return confirm('Hapus data user?')"></button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex justify-content-end">
-                {{ $users->links() }}
-            </div>
+
         </div>
     </div>
     @extends('dashboard.partials.addUserModal')

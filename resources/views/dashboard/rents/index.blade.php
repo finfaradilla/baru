@@ -17,13 +17,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            @if (auth()->user()->role_id <= 4)
+
+            @if (auth()->user()->role_id === 1)
                 <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal"
                     data-bs-target="#pinjamRuangan">
                     Pinjam
                 </button>
             @endif
             <div class="table-responsive">
+                <div class="d-flex justify-content-start">
+                    {{ $adminRents->links() }}
+                </div>
                 <table class="table table-hover table-stripped table-bordered text-center dt-head-center" id="datatable">
                     <thead class="table-info">
                         <tr>
@@ -44,29 +48,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (auth()->user()->role_id <= 2)
-                            @foreach ($adminRents as $rent)
-                                <tr>
-                                    <th scope="row">{{ $loop->iteration }}</th scope="row">
-                                    <td><a href="/dashboard/rooms/{{ $rent->room->code }}" class="text-decoration-none"
-                                            role="button">{{ $rent->room->code }}</a></td>
-                                    <td>{{ $rent->user->name }}</td>
-                                    <td>{{ $rent->time_start_use }}</td>
-                                    <td>{{ $rent->time_end_use }}</td>
-                                    <td>{{ $rent->purpose }}</td>
-                                    <td>{{ $rent->transaction_start }}</td>
-                                    @if ($rent->status == 'dipinjam')
-                                        <td><a href="/dashboard/rents/{{ $rent->id }}/endTransaction"
-                                                class="btn btn-success" type="submit" style="padding: 2px 10px"><i
-                                                    class="bi bi-check fs-5"></i></a></td>
+                        @foreach ($adminRents as $rent)
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th scope="row">
+                                <td><a href="/dashboard/rooms/{{ $rent->room->code }}" class="text-decoration-none"
+                                        role="button">{{ $rent->room->code }}</a></td>
+                                <td>{{ $rent->user->name }}</td>
+                                <td>{{ $rent->time_start_use }}</td>
+                                <td>{{ $rent->time_end_use }}</td>
+                                <td>{{ $rent->purpose }}</td>
+                                <td>{{ $rent->transaction_start }}</td>
+                                @if ($rent->status == 'dipinjam')
+                                    <td><a href="/dashboard/rents/{{ $rent->id }}/endTransaction"
+                                            class="btn btn-success" type="submit" style="padding: 2px 10px"><i
+                                                class="bi bi-check fs-5"></i></a></td>
+                                @else
+                                    @if (!is_null($rent->transaction_end))
+                                        <td>{{ $rent->transaction_end }}</td>
                                     @else
-                                        @if (!is_null($rent->transaction_end))
-                                            <td>{{ $rent->transaction_end }}</td>
-                                        @else
-                                            <td>-</td>
-                                        @endif
+                                        <td>-</td>
                                     @endif
-                                    <td>{{ $rent->status }}</td>
+                                @endif
+                                <td>{{ $rent->status }}</td>
+
+                                @if (auth()->user()->role_id === 1)
                                     <td>
                                         <form action="/dashboard/rents/{{ $rent->id }}" method="post"
                                             class="d-inline">
@@ -76,36 +81,10 @@
                                                 onclick="return confirm('Hapus data peminjaman?')"></button>
                                         </form>
                                     </td>
-                                </tr>
-                            @endforeach
-                        @else
-                            @foreach ($userRents as $rent)
-                                <tr>
-                                    <th scope="row">{{ $loop->iteration }}</th scope="row">
-                                    <td><a href="/dashboard/rooms/{{ $rent->room->code }}" class="text-decoration-none"
-                                            role="button">{{ $rent->room->code }}</a></td>
-                                    @if (auth()->user()->role_id <= 2)
-                                        <td>{{ $rent->user->name }}</td>
-                                    @endif
-                                    <td>{{ $rent->time_start_use }}</td>
-                                    <td>{{ $rent->time_end_use }}</td>
-                                    <td>{{ $rent->purpose }}</td>
-                                    <td>{{ $rent->transaction_start }}</td>
-                                    @if ($rent->status == 'dipinjam')
-                                        <td><a href="/dashboard/rents/{{ $rent->id }}/endTransaction"
-                                                class="btn btn-success" type="submit" style="padding: 2px 10px"><i
-                                                    class="bi bi-check fs-5"></i></a></td>
-                                    @else
-                                        @if (!is_null($rent->transaction_end))
-                                            <td>{{ $rent->transaction_end }}</td>
-                                        @else
-                                            <td>-</td>
-                                        @endif
-                                    @endif
-                                    <td>{{ $rent->status }}</td>
-                                </tr>
-                            @endforeach
-                        @endif
+                                @endif
+                            </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>

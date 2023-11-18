@@ -13,7 +13,7 @@
     <h5 class="sidebar-title">Menu</h5>
 
 
-    @if (auth()->user()->role_id <= 2)
+    @if (auth()->user()->role_id === 1)
         <a href="/dashboard/overview" class="sidebar-item ,mxss9" onclick="toggleActive(this)">
             <!-- <img src="./assets/img/global/grid.svg" alt=""> -->
 

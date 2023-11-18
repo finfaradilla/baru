@@ -4,6 +4,9 @@
     <div class="col-md-10 p-0">
         <div class="card-body text-end">
             <div class="table-responsive">
+                <div class="d-flex justify-content-start">
+                    {{ $rents->links() }}
+                </div>
                 <table class="table table-hover table-stripped table-bordered text-center dt-head-center" id="datatable">
                     <thead class="table-info">
                         <tr>
@@ -30,13 +33,17 @@
                                 <td>{{ $rent->purpose }}</td>
                                 <td>{{ $rent->transaction_start }}</td>
                                 <td>{{ $rent->status }}</td>
-                                <td>
-                                    <a href="/dashboard/temporaryRents/{{ $rent->id }}/acceptRents"
-                                        class="btn btn-success mb-2" style="padding: 2px 10px"><i
-                                            class="bi bi-check-lg"></i></a>
-                                    <a href="/dashboard/temporaryRents/{{ $rent->id }}/declineRents"
-                                        class="btn btn-danger mb-2" style="padding: 2px 10px"><i class="bi bi-x-lg"></i></a>
-                                </td>
+
+                                @if (auth()->user()->role_id === 1)
+                                    <td>
+                                        <a href="/dashboard/temporaryRents/{{ $rent->id }}/acceptRents"
+                                            class="btn btn-success mb-2" style="padding: 2px 10px"><i
+                                                class="bi bi-check-lg"></i></a>
+                                        <a href="/dashboard/temporaryRents/{{ $rent->id }}/declineRents"
+                                            class="btn btn-danger mb-2" style="padding: 2px 10px"><i
+                                                class="bi bi-x-lg"></i></a>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

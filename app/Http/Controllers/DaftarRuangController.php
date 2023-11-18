@@ -31,7 +31,7 @@ class DaftarRuangController extends Controller
             'title' => $room->name,
             'room' => $room,
             'rooms' => Room::all(),
-            'rents' => Rent::where('room_id', $room->id)->get(),
+            'rents' => Rent::where('room_id', $room->id)->latest()->paginate(5),
             'randomImage' => $randomImage, 
         ]);
     }

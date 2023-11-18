@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-    <!--====== PRELOADER PART START ======-->
     <div class="preloader">
         <div class="loader">
             <div class="ytp-spinner">
@@ -18,8 +17,6 @@
             </div>
         </div>
     </div>
-    <!--====== PRELOADER PART ENDS ======-->
-    <!--====== HERO PART START ======-->
     <section id="home" class="hero-area bg_cover">
         <div class="container">
             <div class="row align-items-center">
@@ -41,9 +38,7 @@
             <img src="assets/images/dot-shape.svg" alt="" class="shape">
         </div>
     </section>
-    <!--====== HERO PART END ======-->
 
-    <!--====== Bantuan ======-->
     <section id="skill" class="skill-area pt-170">
         <div class="container">
             <div class="row">
@@ -115,5 +110,4 @@
             </div>
         </div>
     </section>
-    <!--====== Bantuan ======-->
 @endsection

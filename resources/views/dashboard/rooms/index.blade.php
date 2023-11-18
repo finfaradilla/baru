@@ -17,13 +17,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            @if (auth()->user()->role_id)
+
+            @if (auth()->user()->role_id === 1)
                 <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal"
                     data-bs-target="#pinjamRuangan">
                     Pinjam
                 </button>
-            @endif
-            @if (auth()->user()->role_id <= 2)
                 <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal" data-bs-target="#addRoom">
                     Tambah Ruangan
                 </button>
@@ -49,7 +48,8 @@
                                         role="button">{{ $room->name }}</a></td>
 
                                 <td>{{ $room->code }}</td>
-                                @if (auth()->user()->role_id <= 2)
+
+                                @if (auth()->user()->role_id === 1)
                                     <td style="font-size: 22px;">
                                         <a href="/dashboard/rooms/{{ $room->code }}/edit"
                                             class="bi bi-pencil-square text-warning border-0 editroom" id="editroom"

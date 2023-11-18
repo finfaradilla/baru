@@ -6,7 +6,6 @@ use App\Models\Room;
 use App\Models\Building;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\DaftarRuangController;
 use App\Http\Controllers\DaftarPinjamController;
 use App\Http\Controllers\DashboardRentController;
@@ -31,45 +30,35 @@ Route::get('/', function () {
         'title' => "Home",
     ]);
 });
-Route::get('/dashboard/overview', function () {
-    return view('/dashboard/overview/index', [
-        'title' => "Dashboard Admin",
-    ]);
-});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-
 Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::middleware(['auth'])->group(function () {
 
-Route::get('dashboard/rents/{id}/endTransaction', [DashboardRentController::class, 'endTransaction'])->middleware('auth');
+    Route::get('/dashboard/overview', function () {
+        return view('/dashboard/overview/index', [
+            'title' => "Dashboard Admin",
+        ]);
+    });
 
-Route::resource('dashboard/rents', DashboardRentController::class)->middleware('auth');
+    Route::get('/dashboard/temporaryRents', [TemporaryRentController::class, 'index']);
+    Route::get('/dashboard/temporaryRents/{id}/acceptRents', [TemporaryRentController::class, 'acceptRents']);
+    Route::get('/dashboard/temporaryRents/{id}/declineRents', [TemporaryRentController::class, 'declineRents']);
 
-Route::resource('/daftarpinjam', DashboardRentController::class)->middleware('auth');
+    Route::resource('dashboard/rents', DashboardRentController::class);
+    Route::resource('/daftarpinjam', DashboardRentController::class);
+    Route::resource('dashboard/rooms', DashboardRoomController::class);
+    Route::resource('dashboard/users', DashboardUserController::class);
+    Route::resource('dashboard/admin', DashboardAdminController::class);
+    Route::get('/daftarruang', [DaftarRuangController::class, 'index']);
+    Route::get('/showruang/{room:code}', [DaftarRuangController::class, 'show']);
+    Route::get('/daftarpinjam', [DaftarPinjamController::class, 'index']);
+    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::get('dashboard/rents/{id}/endTransaction', [DashboardRentController::class, 'endTransaction']);
 
-Route::resource('dashboard/rooms', DashboardRoomController::class)->middleware('auth');
+    Route::get('dashboard/users/{id}/makeAdmin', [DashboardUserController::class, 'makeAdmin']);
+    Route::get('dashboard/admin/{id}/removeAdmin', [DashboardAdminController::class, 'removeAdmin']);
+});
 
-Route::get('dashboard/users/{id}/makeAdmin', [DashboardUserController::class, 'makeAdmin'])->middleware('auth');
-
-Route::resource('dashboard/users', DashboardUserController::class)->middleware('auth');
-
-Route::get('dashboard/admin/{id}/removeAdmin', [DashboardAdminController::class, 'removeAdmin'])->middleware('auth');
-
-Route::resource('dashboard/admin', DashboardAdminController::class)->middleware('auth');
-
-Route::get('/dashboard/temporaryRents', [TemporaryRentController::class, 'index'])->middleware('auth');
-
-Route::get('/dashboard/temporaryRents/{id}/acceptRents', [TemporaryRentController::class, 'acceptRents'])->middleware('auth');
-
-Route::get('/dashboard/temporaryRents/{id}/declineRents', [TemporaryRentController::class, 'declineRents'])->middleware('auth');
-
-// Route::resource('/daftarruang', RuanganController::class)->middleware('auth');
-
-Route::get('/daftarruang', [DaftarRuangController::class, 'index'])->middleware('auth');
-
-Route::get('/showruang/{room:code}', [DaftarRuangController::class, 'show'])->middleware('auth');
-
-Route::get('/daftarpinjam', [DaftarPinjamController::class, 'index'])->middleware('auth');
 

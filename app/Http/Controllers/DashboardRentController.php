@@ -16,7 +16,7 @@ class DashboardRentController extends Controller
     public function index()
     {
         return view('dashboard.rents.index', [
-            'adminRents' => Rent::latest()->get(),
+            'adminRents' => Rent::latest()->paginate(10),
             'userRents' => Rent::where('user_id', auth()->user()->id)->get(),
             'title' => "Peminjaman",
             'rooms' => Room::all(),
@@ -72,10 +72,10 @@ class DashboardRentController extends Controller
     Rent::create($validatedData);
 
     // Periksa peran pengguna
-    if (auth()->user()->role_id === 2) {
+    if (auth()->user()->role_id === 1) {
         // Admin
         return redirect('/dashboard/rents')->with('rentSuccess', 'Peminjaman diajukan. Harap tunggu konfirmasi admin.');
-    } elseif (auth()->user()->role_id === 5) {
+    } elseif (auth()->user()->role_id === 2) {
         // User
         return redirect('/daftarpinjam')->with('rentSuccess', 'Peminjaman diajukan. Harap tunggu konfirmasi admin.');
     }

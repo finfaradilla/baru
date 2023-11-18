@@ -15,11 +15,9 @@
                 data-bs-target="#pinjamRuangan">
                 Pinjam
             </button>
-            @if (auth()->user()->role_id <= 2)
-                <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal" data-bs-target="#addRoom">
-                    Tambah Ruangan
-                </button>
-            @endif
+            <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal" data-bs-target="#addRoom">
+                Tambah Ruangan
+            </button>
             <div class="table-responsive">
                 <table class="table table-hover table-stripped table-bordered text-center dt-head-center" id="datatable">
                     <thead class="table-info">
