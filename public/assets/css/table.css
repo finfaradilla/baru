@@ -7,7 +7,7 @@
 
 .fl-table {
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: normal;
     border: none;
     border-collapse: collapse;
@@ -38,7 +38,7 @@
     background: #516b85;
 }
 
-.fl-table tr:nth-child(even) {
+.fl-table tr:nth-child(odd) {
     background: #f8f8f8;
 }
 

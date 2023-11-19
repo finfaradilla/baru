@@ -48,43 +48,50 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($adminRents as $rent)
-                            <tr>
-                                <th scope="row">{{ $loop->iteration }}</th scope="row">
-                                <td><a href="/dashboard/rooms/{{ $rent->room->code }}" class="text-decoration-none"
-                                        role="button">{{ $rent->room->code }}</a></td>
-                                <td>{{ $rent->user->name }}</td>
-                                <td>{{ $rent->time_start_use }}</td>
-                                <td>{{ $rent->time_end_use }}</td>
-                                <td>{{ $rent->purpose }}</td>
-                                <td>{{ $rent->transaction_start }}</td>
-                                @if ($rent->status == 'dipinjam')
-                                    <td><a href="/dashboard/rents/{{ $rent->id }}/endTransaction"
-                                            class="btn btn-success" type="submit" style="padding: 2px 10px"><i
-                                                class="bi bi-check fs-5"></i></a></td>
-                                @else
-                                    @if (!is_null($rent->transaction_end))
-                                        <td>{{ $rent->transaction_end }}</td>
+                        @if ($adminRents->count() > 0)
+                            @foreach ($adminRents as $rent)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th scope="row">
+                                    <td><a href="/dashboard/rooms/{{ $rent->room->code }}" class="text-decoration-none"
+                                            role="button">{{ $rent->room->code }}</a></td>
+                                    <td>{{ $rent->user->name }}</td>
+                                    <td>{{ $rent->time_start_use }}</td>
+                                    <td>{{ $rent->time_end_use }}</td>
+                                    <td>{{ $rent->purpose }}</td>
+                                    <td>{{ $rent->transaction_start }}</td>
+                                    @if ($rent->status == 'dipinjam')
+                                        <td><a href="/dashboard/rents/{{ $rent->id }}/endTransaction"
+                                                class="btn btn-success" type="submit" style="padding: 2px 10px"><i
+                                                    class="bi bi-check fs-5"></i></a></td>
                                     @else
-                                        <td>-</td>
+                                        @if (!is_null($rent->transaction_end))
+                                            <td>{{ $rent->transaction_end }}</td>
+                                        @else
+                                            <td>-</td>
+                                        @endif
                                     @endif
-                                @endif
-                                <td>{{ $rent->status }}</td>
+                                    <td>{{ $rent->status }}</td>
 
-                                @if (auth()->user()->role_id === 1)
-                                    <td>
-                                        <form action="/dashboard/rents/{{ $rent->id }}" method="post"
-                                            class="d-inline">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="bi bi-trash-fill text-danger border-0"
-                                                onclick="return confirm('Hapus data peminjaman?')"></button>
-                                        </form>
-                                    </td>
-                                @endif
+                                    @if (auth()->user()->role_id === 1)
+                                        <td>
+                                            <form action="/dashboard/rents/{{ $rent->id }}" method="post"
+                                                class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="bi bi-trash-fill text-danger border-0"
+                                                    onclick="return confirm('Hapus data peminjaman?')"></button>
+                                            </form>
+                                        </td>
+                                    @endif
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="10" class="text-center">
+                                    -- Belum Ada Daftar Peminjam --
+                                </td>
                             </tr>
-                        @endforeach
-
+                        @endif
                     </tbody>
                 </table>
             </div>
