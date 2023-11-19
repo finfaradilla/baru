@@ -1,6 +1,22 @@
 @extends('layouts.main')
 
 @section('container')
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <section id="blog" class="blog-area pt-170 pb-140">
         <div class="container">
             <div class="row">
@@ -60,17 +76,7 @@
                                                 <td>{{ $rent->purpose }}</td>
                                                 <td>{{ $rent->transaction_start }}</td>
                                                 @if ($rent->status == 'dipinjam')
-                                                    <td><a href="/daftarpinjam{{ $rent->id }}/endTransaction"
-                                                            class="btn btn-success" type="submit"
-                                                            style="padding: 2px 10px">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                height="16" fill="currentColor" class="bi bi-check-lg"
-                                                                viewBox="0 0 16 16">
-                                                                <path
-                                                                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
-                                                            </svg>
-                                                        </a>
-                                                    </td>
+                                                    <td>-</td>
                                                 @else
                                                     @if (!is_null($rent->transaction_end))
                                                         <td>{{ $rent->transaction_end }}</td>
@@ -78,6 +84,7 @@
                                                         <td>-</td>
                                                     @endif
                                                 @endif
+
                                                 <td>{{ $rent->status }}</td>
                                             </tr>
                                         @endforeach
