@@ -6,7 +6,7 @@
 
             @if (auth()->user()->role_id === 1)
                 <a href="/dashboard/users" type="button" class="mb-3 btn button btn-primary">
-                    Pilih dari User
+                    Pilih dari Mahasiswa
                 </a>
                 <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal" data-bs-target="#addAdmin">
                     Tambah Data Baru

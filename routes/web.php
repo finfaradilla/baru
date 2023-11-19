@@ -42,23 +42,24 @@ Route::middleware(['auth'])->group(function () {
         ]);
     });
 
-    Route::get('/dashboard/temporaryRents', [TemporaryRentController::class, 'index']);
-    Route::get('/dashboard/temporaryRents/{id}/acceptRents', [TemporaryRentController::class, 'acceptRents']);
-    Route::get('/dashboard/temporaryRents/{id}/declineRents', [TemporaryRentController::class, 'declineRents']);
+    Route::middleware(['checkRole'])->group(function () {
+        Route::get('/dashboard/temporaryRents', [TemporaryRentController::class, 'index']);
+        Route::get('/dashboard/temporaryRents/{id}/acceptRents', [TemporaryRentController::class, 'acceptRents']);
+        Route::get('/dashboard/temporaryRents/{id}/declineRents', [TemporaryRentController::class, 'declineRents']);
+        Route::resource('dashboard/rents', DashboardRentController::class);
+        Route::resource('dashboard/rooms', DashboardRoomController::class);
+        Route::resource('dashboard/users', DashboardUserController::class);
+        Route::resource('dashboard/admin', DashboardAdminController::class);
+        Route::resource('/daftarpinjam', DashboardRentController::class);
+        Route::get('dashboard/rents/{id}/endTransaction', [DashboardRentController::class, 'endTransaction']);
+        Route::get('dashboard/users/{id}/makeAdmin', [DashboardUserController::class, 'makeAdmin']);
+        Route::get('dashboard/admin/{id}/removeAdmin', [DashboardAdminController::class, 'removeAdmin']);
+        });
 
-    Route::resource('dashboard/rents', DashboardRentController::class);
-    Route::resource('/daftarpinjam', DashboardRentController::class);
-    Route::resource('dashboard/rooms', DashboardRoomController::class);
-    Route::resource('dashboard/users', DashboardUserController::class);
-    Route::resource('dashboard/admin', DashboardAdminController::class);
     Route::get('/daftarruang', [DaftarRuangController::class, 'index']);
     Route::get('/showruang/{room:code}', [DaftarRuangController::class, 'show']);
     Route::get('/daftarpinjam', [DaftarPinjamController::class, 'index']);
     Route::post('/logout', [LoginController::class, 'logout']);
-    Route::get('dashboard/rents/{id}/endTransaction', [DashboardRentController::class, 'endTransaction']);
-
-    Route::get('dashboard/users/{id}/makeAdmin', [DashboardUserController::class, 'makeAdmin']);
-    Route::get('dashboard/admin/{id}/removeAdmin', [DashboardAdminController::class, 'removeAdmin']);
 });
 
 
