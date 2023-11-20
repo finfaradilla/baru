@@ -11,7 +11,7 @@
         @endif
         <div class="hero__inner container d-flex flex-wrap justify-content-evenly">
             <div class="left-login">
-                <img src="img/UNIVERSITAS TEKNOKRAT.png" style="width: 75px" alt="logo">
+                <img src="assets/images/UNIVERSITAS TEKNOKRAT.png" style="width: 75px" alt="logo">
                 <h4>Universitas Teknokrat Indonesia | Peminjaman Ruangan Kampus</h4>
             </div>
             <div class="right-login">

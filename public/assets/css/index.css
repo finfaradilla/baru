@@ -161,7 +161,7 @@ ul.main_nav_list {
             rgba(230, 230, 230, 0.1),
             rgba(177, 177, 177, 0.2)
         ),
-        url(../img/Gedung.jpg);
+        url("../images/Gedung.jpg");
 }
 
 .hero__inner {
@@ -210,7 +210,7 @@ ul.main_nav_list {
             rgba(230, 230, 230, 0.6),
             rgba(177, 177, 177, 0.8)
         ),
-        url(../img/Gedung.jpg);
+        url("../images/Gedung.jpg");
 }
 
 .right-login {

@@ -6,7 +6,7 @@
                  <div class="col-xl-12">
                      <nav class="navbar navbar-expand-lg">
                          <a class="navbar-brand" href="index.html">
-                             <img id="logo" src="{{ asset('img/logo-uti.png') }}" alt="Logo">
+                             <img id="logo" src="{{ asset('assets/images/logo-uti.png') }}" alt="Logo">
                          </a>
                          <button class="navbar-toggler" type="button" data-toggle="collapse"
                              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

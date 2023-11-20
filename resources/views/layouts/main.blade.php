@@ -8,17 +8,16 @@
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="{{ asset('img/UNIVERSITAS TEKNOKRAT.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/UNIVERSITAS TEKNOKRAT.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/LineIcons.2.0.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-5.0.5-alpha.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/index.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/css/responsive.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/css/normalize.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/css/landingPage.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}" />
 
 </head>
 

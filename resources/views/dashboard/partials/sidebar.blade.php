@@ -1,7 +1,7 @@
 <aside class="sidebar">
     <a href="#" class="sidebar-logo">
         <div class="d-flex justify-content-start align-items-center">
-            <img src="/img/UNIVERSITAS TEKNOKRAT.png" style="width: 50px" alt="">
+            <img src="{{ asset('assets/images/UNIVERSITAS TEKNOKRAT.png') }}" style="width: 50px" alt="">
             <span>Pinjam Ruang</span>
         </div>
 
