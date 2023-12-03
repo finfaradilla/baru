@@ -13,26 +13,19 @@ class DaftarRuangController extends Controller
     {
         return view('daftarruang', [
             'title' => "Daftar Ruang",
-            'rooms' => Room::latest()->paginate(6),
+            'rooms' => Room::paginate(6),
             'buildings' => Building::all(),
         ]);  
     }
 
     public function show(Room $room)
     {
-        $imageUrls = [
-            asset('img/lab-komputer.jpeg'),
-            asset('img/lab-praktikum.jpeg'),
-            asset('img/ruang-kelas.jpeg'),
-        ];
-        $randomImage = $imageUrls[array_rand($imageUrls)];
     
         return view('showruang', [
             'title' => $room->name,
             'room' => $room,
             'rooms' => Room::all(),
-            'rents' => Rent::where('room_id', $room->id)->latest()->paginate(5),
-            'randomImage' => $randomImage, 
+            'rents' => Rent::where('room_id', $room->id)->latest()->paginate(5), 
         ]);
     }
 }

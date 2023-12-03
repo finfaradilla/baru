@@ -3,13 +3,28 @@
 @section('container')
     <div class="col-md-10 p-0">
         <div class="card-body text-end">
+            @if (session()->has('adminSuccess'))
+                <div class="col-md-16 mx-auto alert alert-success text-center  alert-success alert-dismissible fade show"
+                    style="margin-top: 50px" role="alert">
+                    {{ session('adminSuccess') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if (session()->has('deleteAdmin'))
+                <div class="col-md-16 mx-auto alert alert-success text-center  alert-dismissible fade show"
+                    style="margin-top: 50px" role="alert">
+                    {{ session('deleteAdmin') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 
             @if (auth()->user()->role_id === 1)
                 <a href="/dashboard/users" type="button" class="mb-3 btn button btn-primary">
                     Pilih dari Mahasiswa
                 </a>
-                <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal" data-bs-target="#addAdmin">
-                    Tambah Data Baru
+                <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#addAdmin">
+                    Tambah Admin Baru
                 </button>
             @endif
 
@@ -32,18 +47,20 @@
                                     <td>{{ $admin->name }} </td>
                                     <td>{{ $admin->nomor_induk }} </td>
                                     <td>{{ $admin->email }} </td>
+                                    <td style="font-size: 22px;">
+                                        <a href="/dashboard/users/{{ $admin->id }}/edit" class="edituser" id="edituser"
+                                            data-id="{{ $admin->id }}" data-bs-toggle="modal"
+                                            data-bs-target="#edituser"><i
+                                                class="bi bi-pencil-square text-warning"></i></a>&nbsp;
+                                        <form action="/dashboard/admin/{{ $admin->id }}" method="post" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="bi bi-trash-fill text-danger border-0"
+                                                onclick="return confirm('Hapus data Admin?')">
+                                            </button>
 
-                                    @if (auth()->user()->role_id === 1)
-                                        <td style="font-size: 22px;">
-                                            <a href="/dashboard/users/{{ $admin->id }}/edit" class="edituser"
-                                                id="edituser" data-id="{{ $admin->id }}" data-bs-toggle="modal"
-                                                data-bs-target="#edituser"><i
-                                                    class="bi bi-pencil-square text-warning"></i></a>&nbsp;
-                                            <a href="/dashboard/admin/{{ $admin->id }}/removeAdmin"
-                                                class="bi bi-trash-fill text-danger border-0"
-                                                onclick="return confirm('Ubah admin menjadi mahasiswa?')"></a>
-                                        </td>
-                                    @endif
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         @else

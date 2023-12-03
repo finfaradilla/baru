@@ -18,8 +18,7 @@ class DashboardUserController extends Controller
         return view('dashboard.users.index', [
             'title' => 'Daftar Mahasiswa',
             'roles' => Role::all(),
-            'users' => User::latest('role_id', 5)->paginate(10),
-            'admins' => User::where('role_id', 2)->get(),
+            'users' => User::where('role_id', 2)->paginate(10),
         ]);
     }
 
@@ -53,7 +52,7 @@ class DashboardUserController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/dashboard/users')->with('userSuccess', 'Data user berhasil ditambahkan');
+        return redirect('/dashboard/users')->with('userSuccess', 'Data mahasiswa berhasil ditambahkan');
     }
 
     /**
@@ -102,7 +101,7 @@ class DashboardUserController extends Controller
         User::where('id', $user->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/users')->with('userSuccess', 'Data user berhasil diubah');
+        return redirect('/dashboard/users')->with('userSuccess', 'Data mahasiswa berhasil diubah');
     }
 
     /**
@@ -114,13 +113,13 @@ class DashboardUserController extends Controller
     public function destroy(User $user)
     {
         User::destroy($user->id);
-        return redirect('/dashboard/users')->with('deleteUser', 'Hapus data user berhasil');
+        return redirect('/dashboard/users')->with('deleteUser', 'Hapus data mahasiswa berhasil');
     }
 
     public function makeAdmin($id)
     {
         $userData = [
-            'role_id' => 2,
+            'role_id' => 1,
         ];
 
         User::where('id', $id)->update($userData);

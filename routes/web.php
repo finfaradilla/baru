@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('dashboard/rents/{id}/endTransaction', [DashboardRentController::class, 'endTransaction']);
         Route::get('dashboard/users/{id}/makeAdmin', [DashboardUserController::class, 'makeAdmin']);
         Route::get('dashboard/admin/{id}/removeAdmin', [DashboardAdminController::class, 'removeAdmin']);
+
         });
         
     Route::resource('/daftarpinjam', DashboardRentController::class);

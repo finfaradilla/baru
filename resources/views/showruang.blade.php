@@ -106,7 +106,7 @@
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="welcome-img">
-                        <img style="width: 500px" src="{{ $randomImage }}" alt="Random Image">
+                        <img style="width: 500px" src="{{ asset($room->img) }}" alt="">
                     </div>
                 </div>
             </div>

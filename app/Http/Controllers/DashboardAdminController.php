@@ -16,8 +16,8 @@ class DashboardAdminController extends Controller
     {
         return view('dashboard.admin.index', [
             'title' => "Daftar Admin",
-            'admins' => User::where('role_id', 2)->get(),
-            'users' => User::where('role_id', '>', 2)->get(),
+            'admins' => User::where('role_id', 1)->get(),
+            'users' => User::where('role_id', '<', 2)->get(),
         ]);
     }
 
@@ -46,7 +46,7 @@ class DashboardAdminController extends Controller
             'password' => 'required|min:4'
         ]);
 
-        $validatedData['role_id'] = 2;
+        $validatedData['role_id'] = 1;
 
         $validatedData['password'] = bcrypt($validatedData['password']);
 
@@ -109,16 +109,17 @@ class DashboardAdminController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $admin)
     {
-        User::destroy($user->id);
+        $admin->delete();
         return redirect('/dashboard/admin')->with('deleteAdmin', 'Hapus data admin berhasil');
     }
+    
 
     public function removeAdmin($id)
     {
         $adminData = [
-            'role_id' => 5
+            'role_id' => 1
         ];
 
         User::where('id', $id)->update($adminData);

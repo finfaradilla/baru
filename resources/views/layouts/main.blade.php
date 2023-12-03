@@ -91,38 +91,6 @@
     navbarToggler.addEventListener('click', function() {
         navbarToggler.classList.toggle("active");
     });
-
-    // Ambil semua elemen gambar dengan kelas "randomImage"
-    var images = document.querySelectorAll(".randomImage");
-
-    // Daftar URL gambar
-    var imageUrls = [
-        "{{ asset('assets/images/blog/blog-1.jpg') }}",
-        "{{ asset('assets/images/blog/blog-2.jpg') }}",
-        "{{ asset('assets/images/blog/blog-3.jpg') }}",
-        "{{ asset('assets/images/blog/blog-4.jpg') }}",
-        "{{ asset('assets/images/blog/blog-5.jpg') }}",
-        "{{ asset('assets/images/blog/blog-6.jpg') }}"
-        // Tambahkan URL gambar sesuai kebutuhan
-    ];
-
-    // Fungsi untuk mengacak daftar URL gambar
-    function shuffleArray(array) {
-        for (var i = array.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-    }
-
-    // Mengacak daftar URL gambar
-    shuffleArray(imageUrls);
-
-    // Mengatur gambar pada setiap elemen gambar
-    images.forEach(function(image, index) {
-        image.src = imageUrls[index];
-    });
 </script>
 
 

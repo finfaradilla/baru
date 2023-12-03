@@ -62,7 +62,7 @@
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="bi bi-trash-fill text-danger border-0"
-                                                    onclick="return confirm('Hapus data user?')"></button>
+                                                    onclick="return confirm('Hapus data mahasiswa?')"></button>
                                             </form>
                                         </td>
                                     @endif

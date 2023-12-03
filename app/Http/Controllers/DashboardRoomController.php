@@ -18,7 +18,7 @@ class DashboardRoomController extends Controller
     {
         return view('dashboard.rooms.index', [
             'title' => "Daftar Ruangan",
-            'rooms' => Room::latest()->paginate(10),
+            'rooms' => Room::paginate(10),
             'buildings' => Building::all(),
         ]);
     }
@@ -56,15 +56,15 @@ class DashboardRoomController extends Controller
 
         if ($request->file('img')) {
             $validatedData['img'] = $request->file('img')->store('room-image');
-        } else {
-            $validatedData['img'] = "room-image/roomdefault.jpg";
         }
-
+        
         $validatedData['status'] = false;
 
         Room::create($validatedData);
 
-        return redirect('/dashboard/rooms')->with('roomSuccess', 'Data ruangan berhasil ditambahkan');
+        $request = session();
+        $request->flash('roomSuccess', 'Data ruangan berhasil ditambahkan');
+        return redirect('/dashboard/rooms');
     }
 
     /**

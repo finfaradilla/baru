@@ -10,23 +10,8 @@
             <div class="row align-items-center">
                 <div class="col-xl-6 col-lg-6">
                     <div class="welcome-content">
-                        <div class="section-title">
-                            <h2 class="mb-35 wow fadeInUp" data-wow-delay=".2s"> {{ $room->name }}</h2>
-                        </div>
                         <div class="content">
                             <table>
-                                <tr>
-                                    <td>
-                                        <p class="wow fadeInUp" data-wow-delay=".4s">
-                                            Kode Ruangan
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="wow fadeInUp" data-wow-delay=".4s">
-                                            : {{ $room->code }}
-                                        </p>
-                                    </td>
-                                </tr>
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".4s">
@@ -96,7 +81,7 @@
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="welcome-img">
-                        <img style="width: 500px" src="{{ $randomImage }}" alt="Random Image">
+                        <img style="width: 400px" src="{{ asset($room->img) }}" alt="">
                     </div>
                 </div>
             </div>
@@ -120,17 +105,25 @@
                         </tr>
                     </thead>
                     <tbody class="rent-details">
-                        @foreach ($rents as $rent)
-                            <tr class="rent-detail">
-                                <th scope="row">{{ $loop->iteration }}</th scope="row">
-                                <td>{{ $rent->user->name }}</td>
-                                <td class="detail-rent-room_start-time">{{ $rent->time_start_use }}</td>
-                                <td>{{ $rent->time_end_use }}</td>
-                                <td>{{ $rent->purpose }}</td>
-                                <td>{{ $rent->transaction_start }}</td>
-                                <td>{{ $rent->status }}</td>
+                        @if ($rents->count() > 0)
+                            @foreach ($rents as $rent)
+                                <tr class="rent-detail">
+                                    <th scope="row">{{ $loop->iteration }}</th scope="row">
+                                    <td>{{ $rent->user->name }}</td>
+                                    <td class="detail-rent-room_start-time">{{ $rent->time_start_use }}</td>
+                                    <td>{{ $rent->time_end_use }}</td>
+                                    <td>{{ $rent->purpose }}</td>
+                                    <td>{{ $rent->transaction_start }}</td>
+                                    <td>{{ $rent->status }}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    -- Belum Ada Daftar Peminjaman --
+                                </td>
                             </tr>
-                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

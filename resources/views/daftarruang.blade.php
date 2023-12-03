@@ -36,7 +36,7 @@
                             <div class="blog-img">
 
                                 <a href="/showruang/{{ $room->code }}">
-                                    <img class="randomImage" data-src="{{ $room->image_url }}" alt="Gambar Blog">
+                                    <img src="{{ $room->img }}" alt="FotoRuang">
                                 </a>
 
                             </div>
