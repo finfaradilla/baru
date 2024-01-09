@@ -27,7 +27,7 @@ Reserve Room's Web is a web-based room reservation platform designed to facilita
    ```
 2. Navigate to the `app-pinjam-ruang` folder.
    ```sh
-   cd app-pinjam-ruang
+   cd web-pinjam-ruang
    ```
 3. Install the required components using Composer.
    ```sh
