@@ -49,3 +49,7 @@ Reserve Room's Web is a web-based room reservation platform designed to facilita
    php artisan serve
    ```
 8. Open your browser and go to `127.0.0.1:8000` to use the application.
+   
+9. Login:
+    - email: mahasiswa@gmail.com password: mahasiswa -> User
+    - email: admin@gmail.com password: admin -> Admin
