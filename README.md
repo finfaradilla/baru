@@ -23,7 +23,7 @@ Reserve Room's Web is a web-based room reservation platform designed to facilita
 ## Instalation
 1. Download or clone this project.
    ```git
-   https://github.com/UkiMahfuda/app-pinjam-ruang.git
+   https://github.com/UkiMahfuda/web-pinjam-ruang.git
    ```
 2. Navigate to the `app-pinjam-ruang` folder.
    ```sh
