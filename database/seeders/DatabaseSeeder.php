@@ -54,14 +54,6 @@ class DatabaseSeeder extends Seeder
             'role_id' => 2,
         ]);
 
-        User::create([
-            'name' => 'mahasiswa1',
-            'email' => 'mahasiswa1@gmail.com',
-            'password' => bcrypt('mahasiswa'),
-            'nomor_induk' => '21312100',
-            'role_id' => 2,
-        ]);
-
         Faculty::create([
             'code' => 'FTIK',
             'name' => 'Fakultas Teknik dan Ilmu Komputer',

@@ -15,8 +15,8 @@
                 <div class="col-md-6 ">
                     <div class="text-md-right text-center">
                         <p>
-                            {{-- <span> Designed by UIdeck </span> --}}
-                            <span> Developed by Pixel Team </span>
+                            <span>Developed by Pixel Team </span>
+                            {{-- <span>& Designed by UIdeck </span> --}}
                         </p>
                     </div>
                 </div>

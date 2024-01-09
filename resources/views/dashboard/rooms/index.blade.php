@@ -52,11 +52,11 @@
 
                                     @if (auth()->user()->role_id === 1)
                                         <td style="font-size: 22px;">
-                                            <a href="/dashboard/rooms/{{ $room->code }}/edit"
+                                            {{-- <a href="/dashboard/rooms/{{ $room->code }}/edit"
                                                 class="bi bi-pencil-square text-warning border-0 editroom" id="editroom"
                                                 data-id="{{ $room->id }}" data-code="{{ $room->code }}"
                                                 data-bs-toggle="modal" data-bs-target="#editRoom"></a>
-                                            &nbsp;
+                                            &nbsp; --}}
                                             <form action="/dashboard/rooms/{{ $room->code }}" method="post"
                                                 class="d-inline">
                                                 @method('delete')
