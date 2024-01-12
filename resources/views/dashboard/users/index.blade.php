@@ -51,10 +51,10 @@
                                     <td>{{ $user->role->name }} </td>
                                     @if (auth()->user()->role_id === 1)
                                         <td style="font-size: 22px;">
-                                            {{-- <a href="/dashboard/users/{{ $user->id }}/edit" class="edituser"
+                                             <a href="/dashboard/users/{{ $user->id }}/edit" class="edituser"
                                                 id="edituser" data-id="{{ $user->id }}" data-bs-toggle="modal"
                                                 data-bs-target="#edituser"><i
-                                                    class="bi bi-pencil-square text-warning"></i></a>&nbsp; --}}
+                                                    class="bi bi-pencil-square text-warning"></i></a>&nbsp; 
                                             <a href="/dashboard/users/{{ $user->id }}/makeAdmin" class="makeadmin"
                                                 id="makeadmin"><i class="bi bi-person-plus-fill"></i></a>&nbsp;
                                             <form action="/dashboard/users/{{ $user->id }}" method="post"

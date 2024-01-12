@@ -32,6 +32,7 @@
                     <thead class="table-info">
                         <tr>
                             <th class="text-center" scope="row">No.</th>
+                            <th class="text-center" scope="row">Kode Ruangan</th>
                             <th class="text-center" scope="row">Nama Ruangan</th>
                             <th class="text-center" scope="row">Kapasitas</th>
 
@@ -45,18 +46,18 @@
                             @foreach ($rooms as $room)
                                 <tr>
                                     <th>{{ $loop->iteration }}</th>
-
+                                    <td >{{ $room->code }}</td>
                                     <td><a href="/dashboard/rooms/{{ $room->code }}" class="text-decoration-none"
                                             role="button">{{ $room->name }}</a></td>
                                     <td> {{ $room->capacity }} Kursi</td>
 
                                     @if (auth()->user()->role_id === 1)
                                         <td style="font-size: 22px;">
-                                            {{-- <a href="/dashboard/rooms/{{ $room->code }}/edit"
+                                             <a href="/dashboard/rooms/{{ $room->code }}/edit"
                                                 class="bi bi-pencil-square text-warning border-0 editroom" id="editroom"
                                                 data-id="{{ $room->id }}" data-code="{{ $room->code }}"
                                                 data-bs-toggle="modal" data-bs-target="#editRoom"></a>
-                                            &nbsp; --}}
+                                            &nbsp; 
                                             <form action="/dashboard/rooms/{{ $room->code }}" method="post"
                                                 class="d-inline">
                                                 @method('delete')
@@ -64,6 +65,7 @@
                                                 <button type="submit" class="bi bi-trash-fill text-danger border-0"
                                                     onclick="return confirm('Hapus data ruangan?')"></button>
                                             </form>
+                                            
                                         </td>
                                     @endif
                                 </tr>

@@ -80,28 +80,29 @@ class DashboardAdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        $rules = [
-            'name' => 'required|max:100',
-            'email' => 'required|email',
-            'role_id' => 'required'
-        ];
+ * @param  \Illuminate\Http\Request  $request
+ * @param  \App\Models\User  $user
+ * @return \Illuminate\Http\Response
+ */
+public function update(Request $request, User $admin)
+{
+    $rules = [
+        'name' => 'required|max:100',
+        'email' => 'required|email',
+    ];
 
-        if ($request->nomor_induk != $user->nomor_induk) {
-            $rules['nomor_induk'] = 'required|min:7|max:18|unique:users,nomor_induk';
-        }
-
-        $validatedData = $request->validate($rules);
-        User::where('id', $user->id)
-            ->update($validatedData);
-
-        return redirect('/dashboard/admin')->with('adminSuccess', 'Data admin berhasil diubah');
+    // If the provided nomor_induk is different from the original one, add validation rule
+    if ($request->nomor_induk != $admin->nomor_induk) {
+        $rules['nomor_induk'] = 'required|min:7|max:18|unique:users,nomor_induk';
     }
+
+    $validatedData = $request->validate($rules);
+
+    // Update the admin data
+    $admin->update($validatedData);
+
+    return redirect('/dashboard/admin')->with('adminSuccess', 'Data Admin berhasil diubah');
+}
 
     /**
      * Remove the specified resource from storage.

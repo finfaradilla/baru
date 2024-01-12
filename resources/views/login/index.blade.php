@@ -114,8 +114,8 @@
 
         .content-4-1 .btn-fill {
             font: 500 1.25rem/1.75rem Poppins, sans-serif;
-            background-image: linear-gradient(rgba(91, 203, 173, 1),
-                    rgba(39, 194, 153, 1));
+            background-image: linear-gradient(rgba(61, 74, 91, 1),
+                    rgba(23, 32, 41, 1));
             padding: 0.75rem 1rem;
             margin-top: 2.25rem;
             border-radius: 0.75rem;
@@ -123,7 +123,7 @@
         }
 
         .content-4-1 .btn-fill:hover {
-            background-image: linear-gradient(#2ec49c, #2ec49c);
+            background-image: linear-gradient(#4c5564, #18212a);
             transition: 0.5s;
         }
 
@@ -183,22 +183,28 @@
 </head>
 
 <body>
-    <section class="h-100 w-100" style="box-sizing: border-box; background-color: #f5f5f5">
+    <section class="h-100 w-100" style="box-sizing: border-box; background-color: #fffff">
         <div class="content-4-1 d-flex flex-column align-items-center h-100 flex-lg-row"
             style="font-family: 'Poppins', sans-serif">
             <div class="position-relative d-none d-lg-block h-100 width-left">
                 <img class="position-absolute img-fluid centered"
-                    src="http://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content3/Content-3-11.png"
-                    alt="" />
+                    src="assets/images/Login.jpg"
+                    style="padding-bottom: 10px; padding-left: 10px; width: 150mm; height: auto; border-radius: 100px 30px 100px 30px; 
+                alt="" />
+
             </div>
             <div class="d-flex mx-auto align-items-left justify-content-left width-right mx-lg-0">
                 <div class="right mx-lg-0 mx-auto">
                     <div class="align-items-center justify-content-center d-lg-none d-flex">
                         <img class="img-fluid"
-                            src="http://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content3/Content-3-11.png"
+                            src="assets/images/Login.jpg"
+                            style="padding-bottom: 10px; padding-left: 10px; width: 150mm; height: auto; border-radius: 100px 30px 100px 30px; 
+
                             alt="" />
                     </div>
 
+                    <br>
+                    <br>
                     <h3 class="title-text">Log In to continue</h3>
                     <p class="caption-text">
                         Please log in using that account has<br />

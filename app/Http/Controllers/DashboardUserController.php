@@ -43,18 +43,21 @@ class DashboardUserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:100',
             'nomor_induk' => 'required|min:7|max:18|unique:users,nomor_induk',
-            'email' => 'required|email',
-            'password' => 'required|min:4',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8', // Sesuaikan dengan aturan keamanan yang diinginkan
             'role_id' => 'required'
         ]);
-
+    
         $validatedData['password'] = bcrypt($validatedData['password']);
-
-        User::create($validatedData);
-
-        return redirect('/dashboard/users')->with('userSuccess', 'Data mahasiswa berhasil ditambahkan');
+    
+        try {
+            User::create($validatedData);
+            return redirect('/dashboard/users')->with('userSuccess', 'Data mahasiswa berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect('/dashboard/users')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -86,24 +89,24 @@ class DashboardUserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // return $request;
         $rules = [
             'name' => 'required|max:100',
             'email' => 'required|email',
-            'role_id' => 'required'
+            'role_id' => 'required',
         ];
-
+    
+        // If the provided nomor_induk is different from the original one, add validation rule
         if ($request->nomor_induk != $user->nomor_induk) {
             $rules['nomor_induk'] = 'required|min:7|max:18|unique:users,nomor_induk';
         }
-
+    
         $validatedData = $request->validate($rules);
-        User::where('id', $user->id)
-            ->update($validatedData);
-
+    
+        // Update the user data
+        $user->update($validatedData);
+    
         return redirect('/dashboard/users')->with('userSuccess', 'Data mahasiswa berhasil diubah');
     }
-
     /**
      * Remove the specified resource from storage.
      *

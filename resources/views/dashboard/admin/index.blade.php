@@ -48,10 +48,10 @@
                                     <td>{{ $admin->nomor_induk }} </td>
                                     <td>{{ $admin->email }} </td>
                                     <td style="font-size: 22px;">
-                                        {{-- <a href="/dashboard/users/{{ $admin->id }}/edit" class="edituser" id="edituser"
+                                        <a href="/dashboard/users/{{ $admin->id }}/edit" class="editadmin" id="editadmin"
                                             data-id="{{ $admin->id }}" data-bs-toggle="modal"
-                                            data-bs-target="#edituser"><i
-                                                class="bi bi-pencil-square text-warning"></i></a>&nbsp; --}}
+                                            data-bs-target="#editadmin"><i
+                                                class="bi bi-pencil-square text-warning"></i></a>&nbsp;
                                         <form action="/dashboard/admin/{{ $admin->id }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
@@ -76,6 +76,6 @@
         </div>
     </div>
     @extends('dashboard.partials.addAdminModal')
-    @extends('dashboard.partials.editUserModal')
+    @extends('dashboard.partials.editAdminModal')
     {{-- @extends('dashboard.partials.chooseAdminModal') --}}
 @endsection

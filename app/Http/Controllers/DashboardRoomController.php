@@ -40,13 +40,12 @@ class DashboardRoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // $request->file('img')->store('room-image');
-
+{
+    try {
         $validatedData = $request->validate([
-            'code' => 'required|max:4|unique:rooms',
+            'code' => 'required|max:30|unique:rooms',
             'name' => 'required',
-            'img' => 'image',
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'floor' => 'required',
             'capacity' => 'required',
             'building_id' => 'required',
@@ -55,18 +54,24 @@ class DashboardRoomController extends Controller
         ]);
 
         if ($request->file('img')) {
-            $validatedData['img'] = $request->file('img')->store('room-image');
+            $validatedData['img'] = $this->uploadImage($request, $validatedData['code']);
         }
-        
+
         $validatedData['status'] = false;
 
         Room::create($validatedData);
 
-        $request = session();
-        $request->flash('roomSuccess', 'Data ruangan berhasil ditambahkan');
-        return redirect('/dashboard/rooms');
+        return redirect('/dashboard/rooms')->with('roomSuccess', 'Data ruangan berhasil ditambahkan');
+    } catch (\Exception $e) {
+        return redirect('/dashboard/rooms')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
     }
+}
 
+private function uploadImage($request, $code)
+{
+    $imgPath = $request->file('img')->storeAs('public/assets/images', $code . '.' . $request->file('img')->extension());
+    return 'assets/images/' . basename($imgPath);
+} 
     /**
      * Display the specified resource.
      *
@@ -99,7 +104,13 @@ class DashboardRoomController extends Controller
      */
     public function edit(Room $room)
     {
-        return json_encode($room);
+        $buildings = Building::all();
+
+        return view('dashboard.rooms.edit', [
+            'title' => 'Edit Ruangan: ' . $room->name,
+            'room' => $room,
+            'buildings' => $buildings,
+        ]);
     }
 
     /**
@@ -111,35 +122,38 @@ class DashboardRoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        // return $request;
-        $rules = [
-            'name' => 'required',
-            'img' => 'image',
-            'floor' => 'required',
-            'capacity' => 'required',
-            'building_id' => 'required',
-            'type' => 'required',
-            'description' => 'required|max:250',
-        ];
+        try {
+            $rules = [
+                'name' => 'required',
+                'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'floor' => 'required',
+                'capacity' => 'required',
+                'building_id' => 'required',
+                'type' => 'required',
+                'description' => 'required|max:250',
+            ];
 
-        if ($request->code != $room->code) {
-            $rules['code'] = 'required|max:4|unique:rooms';
+            if ($request->code != $room->code) {
+                $rules['code'] = 'required|max:4|unique:rooms';
+            }
+
+            $validatedData = $request->validate($rules);
+
+            if ($request->file('img')) {
+                $imgPath = $request->file('img')->storeAs('public/assets/images', $validatedData['code'] . '.' . $request->file('img')->extension());
+                $validatedData['img'] = 'assets/images/' . basename($imgPath);
+            } else {
+                $validatedData['img'] = "room-image/roomdefault.jpg";
+            }
+
+            $validatedData['status'] = false;
+
+            $room->update($validatedData);
+
+            return redirect('/dashboard/rooms')->with('roomSuccess', 'Data ruangan berhasil diubah');
+        } catch (\Exception $e) {
+            return redirect('/dashboard/rooms')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-        $validatedData = $request->validate($rules);
-
-        if ($request->file('img')) {
-            $validatedData['img'] = $request->file('img')->store('room-image');
-        } else {
-            $validatedData['img'] = "room-image/roomdefault.jpg";
-        }
-
-        $validatedData['status'] = false;
-
-        Room::where('id', $room->id)
-            ->update($validatedData);
-
-        return redirect('/dashboard/rooms')->with('roomSuccess', 'Data ruangan berhasil diubah');
     }
 
     /**
