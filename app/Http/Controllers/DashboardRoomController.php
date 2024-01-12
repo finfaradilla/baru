@@ -69,8 +69,8 @@ class DashboardRoomController extends Controller
 
 private function uploadImage($request, $code)
 {
-    $imgPath = $request->file('img')->storeAs('public/assets/images', $code . '.' . $request->file('img')->extension());
-    return 'assets/images/' . basename($imgPath);
+    $imgPath = $request->file('img')->storeAs('public/assets/images/ruang/', $code . '.' . $request->file('img')->extension());
+    return 'assets/images/ruang/' . basename($imgPath);
 } 
     /**
      * Display the specified resource.
@@ -140,8 +140,8 @@ private function uploadImage($request, $code)
             $validatedData = $request->validate($rules);
 
             if ($request->file('img')) {
-                $imgPath = $request->file('img')->storeAs('public/assets/images', $validatedData['code'] . '.' . $request->file('img')->extension());
-                $validatedData['img'] = 'assets/images/' . basename($imgPath);
+                $imgPath = $request->file('img')->storeAs('public/assets/images/ruang/', $validatedData['code'] . '.' . $request->file('img')->extension());
+                $validatedData['img'] = 'assets/images/ruang/' . basename($imgPath);
             } else {
                 $validatedData['img'] = "room-image/roomdefault.jpg";
             }

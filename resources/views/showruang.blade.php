@@ -105,9 +105,18 @@
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
-                    <div class="welcome-img">
-                        <img style="width: 500px" src="{{ asset($room->img) }}" alt="">
-                    </div>
+
+                    @if ($room->img && Storage::exists('public/' . $room->img))
+                        <div class="welcome-img">
+                            <img style="width: 400px" src="{{ asset('storage/' . $room->img) }}" alt="">
+                        </div>
+                    @else
+                        @if ($room->img)
+                            <div class="welcome-img">
+                                <img style="width: 400px" src="{{ asset($room->img) }}" alt="">
+                            </div>
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>

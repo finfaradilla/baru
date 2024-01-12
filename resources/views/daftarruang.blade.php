@@ -36,7 +36,16 @@
                             <div class="blog-img">
 
                                 <a href="/showruang/{{ $room->code }}">
-                                    <img src="{{ $room->img }}" alt="FotoRuang">
+
+
+                                    @if ($room->img && Storage::exists('public/' . $room->img))
+                                        <img src="{{ asset('storage/' . $room->img) }}" alt="">
+                                    @else
+                                        @if ($room->img)
+                                            <img src="{{ $room->img }}" alt="FotoRuang">
+                                        @endif
+                                    @endif
+
                                 </a>
 
                             </div>
