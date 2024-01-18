@@ -21,7 +21,9 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="nomor_induk" class="form-label">Nomor Induk</label>
+                        <label for="nomor_induk" class="form-label">Nomor Induk
+                            <span class="text-danger fst-italic fw-lighter" style="font-size: 12px"> *Min 8 Angka</span>
+                        </label>
                         <input autocomplete="off" type="number"
                             class="form-control @error('nomor_induk') is-invalid @enderror" id="nomor_induk"
                             name="nomor_induk" value="{{ old('nomor_induk') }}" required>
@@ -43,7 +45,10 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label">Password
+                            <span class="text-danger fst-italic fw-lighter" style="font-size: 12px"> *Min 4
+                                Karakter</span>
+                        </label>
                         <input autocomplete="off" type="password"
                             class="form-control @error('password') is-invalid @enderror" id="password" name="password"
                             value="{{ old('password') }}" required>

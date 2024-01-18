@@ -34,10 +34,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-blog">
                             <div class="blog-img">
-
                                 <a href="/showruang/{{ $room->code }}">
-
-
                                     @if ($room->img && Storage::exists('public/' . $room->img))
                                         <img src="{{ asset('storage/' . $room->img) }}" alt="">
                                     @else
@@ -45,15 +42,12 @@
                                             <img src="{{ $room->img }}" alt="FotoRuang">
                                         @endif
                                     @endif
-
                                 </a>
-
                             </div>
                             <div class="blog-content">
                                 <h4><a href="/showruang/{{ $room->code }}">{{ $room->name }}</a></h4>
                                 <p>Gedung : {{ $room->building->name }}</p>
                                 <p>Kapasitas : {{ $room->capacity }}</p>
-
                             </div>
                         </div>
                     </div>
@@ -119,8 +113,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label for="purpose" class="form-label">Tujuan</label>
-                                    <input type="text" class="form-control  @error('capacity') is-invalid @enderror"
-                                        id="purpose" name="purpose" value="{{ old('purpose') }}" required>
+                                    <input type="text" class="form-control  @error('purpose') is-invalid @enderror"
+                                        id="purpose" name="purpose" value="{{ old('purpose') }}" autocomplete="off"
+                                        required>
                                     @error('purpose')
                                         <div class="invalid-feedback">
                                             {{ $message }}

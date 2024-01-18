@@ -58,6 +58,38 @@
             e.closest('.sidebar-item').classList.add('active')
 
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var nameInput = document.getElementById('name');
+            var sisaMinSpan = document.getElementById('sisaMin');
+
+            nameInput.addEventListener('input', function() {
+                var inputValue = nameInput.value.length;
+                var minCharacter = 4;
+
+                // Update sisaMinSpan
+                sisaMinSpan.textContent = Math.max(0, minCharacter - inputValue);
+
+                // Tampilkan notifikasi jika kurang dari 4 karakter
+                if (inputValue < minCharacter) {
+                    showNotification('Nama Lengkap harus memiliki setidaknya 4 karakter.');
+                }
+            });
+
+            // Fungsi untuk menampilkan notifikasi
+            function showNotification(message) {
+                var notification = document.createElement('div');
+                notification.className = 'alert alert-danger alert-dismissible fade show';
+                notification.innerHTML = message +
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                document.body.appendChild(notification);
+
+                // Menghilangkan notifikasi setelah beberapa detik (misalnya, 3 detik)
+                setTimeout(function() {
+                    notification.style.display = 'none';
+                }, 3000);
+            }
+        });
     </script>
 </body>
 

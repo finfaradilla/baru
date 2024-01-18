@@ -187,8 +187,7 @@
         <div class="content-4-1 d-flex flex-column align-items-center h-100 flex-lg-row"
             style="font-family: 'Poppins', sans-serif">
             <div class="position-relative d-none d-lg-block h-100 width-left">
-                <img class="position-absolute img-fluid centered"
-                    src="assets/images/Login.jpg"
+                <img class="position-absolute img-fluid centered" src="assets/images/Login.jpg"
                     style="padding-bottom: 10px; padding-left: 10px; width: 150mm; height: auto; border-radius: 100px 30px 100px 30px; 
                 alt="" />
 
@@ -196,8 +195,7 @@
             <div class="d-flex mx-auto align-items-left justify-content-left width-right mx-lg-0">
                 <div class="right mx-lg-0 mx-auto">
                     <div class="align-items-center justify-content-center d-lg-none d-flex">
-                        <img class="img-fluid"
-                            src="assets/images/Login.jpg"
+                        <img class="img-fluid" src="assets/images/Login.jpg"
                             style="padding-bottom: 10px; padding-left: 10px; width: 150mm; height: auto; border-radius: 100px 30px 100px 30px; 
 
                             alt="" />
@@ -205,11 +203,19 @@
 
                     <br>
                     <br>
+
                     <h3 class="title-text">Log In to continue</h3>
                     <p class="caption-text">
                         Please log in using that account has<br />
                         registered on the website.
                     </p>
+                    @if (session()->has('loginError'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('loginError') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endif
                     <form action="/login" method="post" class="form-input">
                         @csrf
                         <div style="margin-bottom: 1.75rem">
@@ -222,17 +228,16 @@
                                         fill="#CACBCE" />
                                 </svg>
 
-                                <input class="input-field border-0" type="email"
-                                    placeholder="Your Email Address @error('email') is-invalid @enderror" required
-                                    value="{{ old('email') }}" autocomplete="on" class="input-form" name="email"
-                                    id="floatingInput" />
-                                @error('email')
-                                    <div class="invalid-feedback" style="display: block">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-
+                                <input class="input-field border-0" type="email" required
+                                    placeholder="Your Email Address @error('email') is-invalid @enderror"
+                                    value="{{ old('email') }}" class="input-form" name="email" id="floatingInput"
+                                    autofocus autocomplete="off" />
                             </div>
+                            @error('email')
+                                <div class="invalid-feedback" style="display: block">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div style="margin-top: 1rem">
                             <label for="" class="d-block input-label">Password</label>
@@ -244,8 +249,8 @@
                                         fill="#CACBCE" />
                                 </svg>
 
-                                <input type="password" class="input-field border-0"
-                                    placeholder="Your Password @error('password') is-invalid @enderror" required
+                                <input type="password" class="input-field border-0" required
+                                    placeholder="Your Password @error('password') is-invalid @enderror"
                                     value="{{ old('password') }}" name="password" id="password-content-4-1" />
 
                                 <div onclick="togglePassword()">
@@ -257,12 +262,18 @@
                                     </svg>
                                 </div>
                             </div>
+                            @error('password')
+                                <div class="invalid-feedback" style="display: block">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <button class="btn btn-fill text-white d-block w-100 " style="margin-bottom: 25px"
                             type="submit">
                             Log In
                         </button>
                     </form>
+
 
 
                 </div>

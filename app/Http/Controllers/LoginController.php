@@ -49,7 +49,7 @@ class LoginController extends Controller
             }
         }
     
-        return back()->with('loginError', 'Gagal melakukan proses autentikasi. Mohon untuk mengisi email & password dengan benar.');
+        return back()->with('loginError', 'Masukkan Email & Password Dengan Benar');
     }
     
 

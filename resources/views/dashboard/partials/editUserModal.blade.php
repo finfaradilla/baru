@@ -17,8 +17,8 @@
                             name="name" value="{{ old('name') }}" required>
                         @error('name')
     <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
+                                                {{ $message }}
+                                            </div>
 @enderror
                     </div>
                     <div class="mb-3">
@@ -27,8 +27,8 @@
                             id="nomor_induk" name="nomor_induk" value="{{ old('nomor_induk') }}" required>
                         @error('nomor_induk')
     <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
+                                                {{ $message }}
+                                            </div>
 @enderror
                     </div>
                     <div class="mb-3">
@@ -37,8 +37,8 @@
                             name="email" value="{{ old('email') }}" required>
                         @error('email')
     <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
+                                                {{ $message }}
+                                            </div>
 @enderror
                     </div>
                     @if (Request::is('dashboard/admin'))
@@ -91,7 +91,9 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="nomor_induk" class="form-label">Nomor Induk</label>
+                        <label for="nomor_induk" class="form-label">Nomor Induk
+                            <span class="text-danger fst-italic fw-lighter" style="font-size: 12px"> *Min 8
+                                Angka</span></label>
                         <input type="number" class="form-control @error('nomor_induk') is-invalid @enderror"
                             id="nomor_induk" name="nomor_induk" name="nomor_induk"
                             value="{{ old('nomor_induk', $user->nomor_induk) }}" required>

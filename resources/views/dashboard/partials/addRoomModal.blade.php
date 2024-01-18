@@ -32,7 +32,9 @@
                         @enderror
                     </div>
                     <div class='mb-3'>
-                        <label for='img' class='form-label'>Foto Ruangan</label>
+                        <label for='img' class='form-label'>Foto Ruangan <span
+                                class="text-danger fst-italic fw-lighter" style="font-size: 12px">
+                                *Max 2 Mb</span></label>
                         <input class="form-control @error('img') is-invalid @enderror" type='file' id='img'
                             name='img' />
                         @error('img')

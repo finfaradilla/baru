@@ -41,7 +41,7 @@ class DashboardAdminController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
-            'nomor_induk' => 'required|min:7|max:18|unique:users,nomor_induk',
+            'nomor_induk' => 'required|min:8|unique:users,nomor_induk',
             'email' => 'required|email',
             'password' => 'required|min:4'
         ]);
@@ -93,7 +93,7 @@ public function update(Request $request, User $admin)
 
     // If the provided nomor_induk is different from the original one, add validation rule
     if ($request->nomor_induk != $admin->nomor_induk) {
-        $rules['nomor_induk'] = 'required|min:7|max:18|unique:users,nomor_induk';
+        $rules['nomor_induk'] = 'required|min:8|unique:users,nomor_induk';
     }
 
     $validatedData = $request->validate($rules);

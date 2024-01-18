@@ -20,10 +20,11 @@ class DashboardRoomController extends Controller
     {
         return view('dashboard.rooms.index', [
             'title' => "Daftar Ruangan",
-            'rooms' => Room::paginate(10),
+            'rooms' => Room::orderBy('created_at', 'desc')->paginate(10),
             'buildings' => Building::all(),
         ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.

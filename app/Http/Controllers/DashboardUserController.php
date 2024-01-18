@@ -42,9 +42,9 @@ class DashboardUserController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
-            'nomor_induk' => 'required|min:7|max:18|unique:users,nomor_induk',
+            'nomor_induk' => 'required|min:8|unique:users,nomor_induk',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8', // Sesuaikan dengan aturan keamanan yang diinginkan
+            'password' => 'required|min:4', 
             'role_id' => 'required'
         ]);
     
@@ -97,7 +97,7 @@ class DashboardUserController extends Controller
     
         // If the provided nomor_induk is different from the original one, add validation rule
         if ($request->nomor_induk != $user->nomor_induk) {
-            $rules['nomor_induk'] = 'required|min:7|max:18|unique:users,nomor_induk';
+            $rules['nomor_induk'] = 'required|min:8|unique:users,nomor_induk';
         }
     
         $validatedData = $request->validate($rules);

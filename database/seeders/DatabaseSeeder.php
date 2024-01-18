@@ -39,15 +39,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'admin',
+            'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin'),
-            'nomor_induk' => '1010101010',
+            'nomor_induk' => '21312131',
             'role_id' => 1,
         ]);
 
         User::create([
-            'name' => 'mahasiswa',
+            'name' => 'Mahasiswa',
             'email' => 'mahasiswa@gmail.com',
             'password' => bcrypt('mahasiswa'),
             'nomor_induk' => '21312109',
@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Lab Komputer',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 2,
         ]);
 
@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Lab Komputer',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 2,
         ]);
 
@@ -124,7 +124,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Lab Komputer',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 2,
         ]);
         
@@ -136,7 +136,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Lab Komputer',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 2,
         ]);
 
@@ -148,7 +148,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Lab Komputer',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 1,
         ]);
 
@@ -160,7 +160,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 40,
             'type' => 'Lab Komputer',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 1,
         ]);
         
@@ -172,7 +172,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 40,
             'type' => 'Lab Komputer',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 1,
         ]);
 
@@ -184,7 +184,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 40,
             'type' => 'Lab Komputer',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 1,
         ]);
 
@@ -196,7 +196,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 100,
             'type' => 'Aula',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 1,
         ]);
 
@@ -208,7 +208,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 80,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 1,
         ]);
 
@@ -220,7 +220,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 80,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 1,
         ]);
 
@@ -232,7 +232,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 45,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 1,
         ]);
 
@@ -244,7 +244,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 4,
         ]);
 
@@ -256,7 +256,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 4,
         ]);
 
@@ -268,7 +268,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 40,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 4,
         ]);
 
@@ -280,7 +280,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 4,
         ]);
 
@@ -292,7 +292,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 4,
         ]);
 
@@ -304,7 +304,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 4,
         ]);
         
@@ -316,7 +316,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 4,
         ]);
 
@@ -328,7 +328,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 40,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 4,
         ]);
 
@@ -340,7 +340,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Lab Komputer',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 3,
         ]);
 
@@ -352,7 +352,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 50,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 3,
         ]);
 
@@ -364,7 +364,7 @@ class DatabaseSeeder extends Seeder
             'status' => false,
             'capacity' => 100,
             'type' => 'Ruang Kelas',
-            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sint laborum quas nam, iusto cum corporis porro quae ratione?',
+            'description' => 'Laboratorium kampus adalah fasilitas vital dalam lingkungan pendidikan tinggi, menyediakan lingkungan yang didedikasikan untuk eksperimen, riset, dan kegiatan praktis di berbagai bidang studi.',
             'building_id' => 3,
         ]);
 

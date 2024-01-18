@@ -20,7 +20,7 @@
     </div>
     <section id="blog" class="container blog-area pt-170 pb-140">
         <div>
-            <div class="container row align-items-center ">
+            <div class="container row align-items-center  ">
                 <div class="col-xl-6 col-lg-6">
                     <div class="welcome-content">
                         <div class="section-title">
@@ -105,15 +105,16 @@
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
-
                     @if ($room->img && Storage::exists('public/' . $room->img))
                         <div class="welcome-img">
-                            <img style="width: 400px" src="{{ asset('storage/' . $room->img) }}" alt="">
+                            <img style="width: 400px; border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;"
+                                src="{{ asset('storage/' . $room->img) }}" alt="">
                         </div>
                     @else
                         @if ($room->img)
                             <div class="welcome-img">
-                                <img style="width: 400px" src="{{ asset($room->img) }}" alt="">
+                                <img style="width: 400px; border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;"
+                                    src="{{ asset($room->img) }}" alt="">
                             </div>
                         @endif
                     @endif
@@ -147,7 +148,7 @@
                         <div class="col-md-6">
                             <label for="purpose" class="form-label">Tujuan</label>
                             <input type="text" class="form-control  @error('capacity') is-invalid @enderror"
-                                id="purpose" name="purpose" value="{{ old('purpose') }}" required>
+                                id="purpose" name="purpose" value="{{ old('purpose') }}" autocomplete="off" required>
                             @error('purpose')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -169,7 +170,9 @@
                     </div>
 
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Pinjam Ruang</button>
+                        <button class="btn btn-warning rounded-pill btn-hover fw-semibold text-white" type="submit">Pinjam
+                            Ruang</button>
+
                     </div>
                 </form>
 
