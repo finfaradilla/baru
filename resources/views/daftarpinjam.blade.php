@@ -22,15 +22,14 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-7">
                     <div class="section-title">
-                        <h2 class="wow fadeInUp" data-wow-delay=".2s">{{ $title }} </h2>
-                        <p class="wow fadeInUp" data-wow-delay=".4s">Pemberitahuan dari admin akan muncul di daftar
-                            peminjaman ini. Silahkan tunggu sampai dapat persetujuan dari admin.</p>
+                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Booking List</h2>
+         
                     </div>
                 </div>
             </div>
             <div class="row">
 
-                <div class="col-md-10 p-0">
+                <div class="p-0">
                     <div class="card-body text-end">
                         @if (session()->has('rentSuccess'))
                             <div class="col-md-16 mx-auto alert alert-success text-center  alert-success alert-dismissible fade show"

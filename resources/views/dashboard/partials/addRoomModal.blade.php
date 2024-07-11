@@ -56,16 +56,6 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="building_id" class="form-label d-block">Gedung</label>
-                        <select class="form-select" aria-label="Default select example" name="building_id"
-                            id="building_id" required value="{{ old('building_id') }}">
-                            <option selected disabled>Pilih Gedung</option>
-                            @foreach ($buildings as $building)
-                                <option value="{{ $building->id }}">{{ $building->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
                         <label for="type" class="form-label">Tipe Ruangan</label>
                         <select class="form-select" name="type" id="type" required value="{{ old('type') }}">
                             <option selected disabled>Pilih Tipe Ruangan</option>

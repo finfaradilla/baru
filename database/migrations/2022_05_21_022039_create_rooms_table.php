@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('img')->nullable();
             $table->integer('floor');
-            $table->foreignId('building_id');
             $table->boolean('status');
             $table->integer('capacity');
+            $table->json('items')->nullable();
             $table->string('type');
             $table->longText('description');
             $table->timestamps();

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Models\Rent;
-use App\Models\Building;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,7 +20,6 @@ class DashboardRoomController extends Controller
         return view('dashboard.rooms.index', [
             'title' => "Daftar Ruangan",
             'rooms' => Room::orderBy('created_at', 'desc')->paginate(10),
-            'buildings' => Building::all(),
         ]);
     }
     
@@ -51,7 +49,6 @@ class DashboardRoomController extends Controller
                 'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'floor' => 'required',
                 'capacity' => 'required',
-                'building_id' => 'required',
                 'type' => 'required',
                 'description' => 'required|max:250',
             ]);
@@ -106,12 +103,9 @@ class DashboardRoomController extends Controller
      */
     public function edit(Room $room)
     {
-        $buildings = Building::all();
-
         return view('dashboard.rooms.edit', [
             'title' => 'Edit Ruangan: ' . $room->name,
             'room' => $room,
-            'buildings' => $buildings,
         ]);
     }
 
@@ -130,7 +124,6 @@ class DashboardRoomController extends Controller
                 'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'floor' => 'required',
                 'capacity' => 'required',
-                'building_id' => 'required',
                 'type' => 'required',
                 'description' => 'required|max:250',
             ];

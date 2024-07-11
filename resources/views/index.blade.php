@@ -22,19 +22,18 @@
             <div class="row align-items-center">
                 <div class="col-xl-5 offset-xl-7 col-lg-8 offset-lg-2 col-md-10 offset-md-1">
                     <div class="hero-content">
-                        <h2 class="mb-30 wow fadeInUp" data-wow-delay=".2s">Sistem Peminjaman Ruangan
+                        <h2 class="mb-30 wow fadeInUp" data-wow-delay=".2s">Room Reservation
                         </h2>
-                        <p class="wow fadeInUp" data-wow-delay=".4s">Selamat datang di Website Peminjaman Ruang Terbaik di
-                            Universitas Teknokrat Indonesia. Temukan, pesan, dan gunakan ruang kampus dengan mudah</p>
+                        <!-- <p class="wow fadeInUp" data-wow-delay=".4s">Welcome to this website.</p> -->
                         <div class="hero-btns">
-                            <a href="/daftarruang" class="main-btn wow fadeInUp" data-wow-delay=".6s">Pinjam</a>
+                            <a href="/daftarruang" class="main-btn wow fadeInUp" data-wow-delay=".6s">Book a room</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="hero-left">
-            <img src="assets/images/Gajah Lampung.jpg" alt="">
+            <img src="assets/images/Alhaitham.jpg" alt="">
             <img src="assets/images/dot-shape.svg" alt="" class="shape">
         </div>
     </section>
@@ -44,10 +43,10 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-7 col-md-10 mx-auto">
                     <div class="section-title text-center">
-                        <h2 class="mb-15 wow fadeInUp" data-wow-delay=".2s">Bantuan</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".4s">Tata Cara Penggunaan Sistem Peminjaman Ruangan
+                        <h2 class="mb-15 wow fadeInUp" data-wow-delay=".2s">Tutorial</h2>
+                        <!-- <p class="wow fadeInUp" data-wow-delay=".4s">Tata Cara Penggunaan Sistem Peminjaman Ruangan
                             <br> Universitas Teknokrat Indonesia
-                        </p>
+                        </p> -->
                     </div>
                 </div>
             </div>
@@ -66,7 +65,7 @@
                         <div class="skill-content">
                             <h4>Login</h4>
                             <p>
-                                Silahkan login terlebih dahulu sesuai dengan username yang telah disediakan oleh admin
+                            Login with your Scorpa Pranedya account
                             </p>
                         </div>
                     </div>
@@ -81,10 +80,9 @@
                             </svg>
                         </div>
                         <div class="skill-content">
-                            <h4>Isi Form</h4>
+                            <h4>Fill the form</h4>
                             <p>
-                                Silakan menuju ke menu Daftar Ruangan. Jika ruangan tersedia, isi form peminjaman secara
-                                lengkap, dan submit.
+                            Go to the Room List menu. If the room is available, fill in the form completely and submit.
                             </p>
                         </div>
                     </div>
@@ -99,10 +97,9 @@
                             </svg>
                         </div>
                         <div class="skill-content">
-                            <h4>Proses</h4>
+                            <h4>Approval process</h4>
                             <p>
-                                Tunggu saat proses peminjaman. Untuk mengecek status peminjaman, silakan
-                                menuju menu Daftar Peminjaman.
+                            Wait for the process. To check the status, please go to the Room Reservation List menu.
                             </p>
                         </div>
                     </div>

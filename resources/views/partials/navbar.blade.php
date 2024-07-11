@@ -5,9 +5,9 @@
              <div class="row align-items-center">
                  <div class="col-xl-12">
                      <nav class="navbar navbar-expand-lg">
-                         <a class="navbar-brand" href="index.html">
+                         <!-- <a class="navbar-brand" href="index.html">
                              <img id="logo" src="{{ asset('assets/images/logo-uti.png') }}" alt="Logo">
-                         </a>
+                         </a> -->
                          <button class="navbar-toggler" type="button" data-toggle="collapse"
                              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                              aria-expanded="false" aria-label="Toggle navigation">
@@ -22,10 +22,10 @@
                                  </li>
                                  @auth
                                      <li class="nav-item">
-                                         <a href="/daftarruang" class="text-warning">Daftar Ruang</a>
+                                         <a href="/daftarruang" class="text-warning">Room List</a>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="/daftarpinjam" class="text-warning">Daftar Peminjaman</a>
+                                         <a href="/daftarpinjam" class="text-warning">Booking List</a>
                                      </li>
                                      <form action="/logout" method="post">
                                          @csrf

@@ -23,9 +23,7 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-7">
                     <div class="section-title">
-                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Daftar Ruangan</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".4s">Pesan Ruang dengan Lebih Mudah! Kami menyediakan solusi
-                            peminjaman ruang yang praktis untuk mahasiswa dan staf universitas.</p>
+                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Room List</h2>
                     </div>
                 </div>
             </div>
@@ -46,8 +44,7 @@
                             </div>
                             <div class="blog-content">
                                 <h4><a href="/showruang/{{ $room->code }}">{{ $room->name }}</a></h4>
-                                <p>Gedung : {{ $room->building->name }}</p>
-                                <p>Kapasitas : {{ $room->capacity }}</p>
+                                <p>Capacity : {{ $room->capacity }}</p>
                             </div>
                         </div>
                     </div>
@@ -69,8 +66,7 @@
             <div class="row">
                 <div class="col-xl-5 col-lg-5">
                     <div class="section-title">
-                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Form Pinjam Ruang</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".4s">Isi form secara lengkap untuk meminjam ruangan</p>
+                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Form Room Reservation</h2>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7">
@@ -80,11 +76,11 @@
                             <input type="hidden" name="room_id" id="room_id">
                             <div class="row">
                                 <div class="col-12 mb-3">
-                                    <label for="room_id" class="form-label d-block">Kode Ruangan</label>
+                                    <label for="room_id" class="form-label d-block">Room code</label>
                                     <select class="form-select" aria-label="Default select example" name="room_id"
                                         id="room_id" required>
                                         @if (count(request()->segments()) < 3)
-                                            <option selected disabled>Pilih Kode Ruangan</option>
+                                            <option selected disabled>Choose room code</option>
                                         @endif
                                         @foreach ($rooms as $room)
                                             @if ($room->code == request()->segment(count(request()->segments())))
@@ -100,19 +96,19 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="time_start" class="form-label">Mulai Pinjam</label>
+                                    <label for="time_start" class="form-label">Start Time</label>
                                     <input type="datetime-local" class="form-control" id="time_start_use"
                                         name="time_start_use" value="{{ old('time_start_use') }}" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="time_end" class="form-label">Selesai Pinjam</label>
+                                    <label for="time_end" class="form-label">End Time</label>
                                     <input type="datetime-local" class="form-control" id="time_end_use" name="time_end_use"
                                         value="{{ old('time_end_use') }}" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <label for="purpose" class="form-label">Tujuan</label>
+                                    <label for="purpose" class="form-label">Purpose</label>
                                     <input type="text" class="form-control  @error('purpose') is-invalid @enderror"
                                         id="purpose" name="purpose" value="{{ old('purpose') }}" autocomplete="off"
                                         required>

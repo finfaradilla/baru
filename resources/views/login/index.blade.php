@@ -186,19 +186,9 @@
     <section class="h-100 w-100" style="box-sizing: border-box; background-color: #fffff">
         <div class="content-4-1 d-flex flex-column align-items-center h-100 flex-lg-row"
             style="font-family: 'Poppins', sans-serif">
-            <div class="position-relative d-none d-lg-block h-100 width-left">
-                <img class="position-absolute img-fluid centered" src="assets/images/Login.jpg"
-                    style="padding-bottom: 10px; padding-left: 10px; width: 150mm; height: auto; border-radius: 100px 30px 100px 30px; 
-                alt="" />
-
-            </div>
-            <div class="d-flex mx-auto align-items-left justify-content-left width-right mx-lg-0">
+            <div class="d-flex mx-auto align-items-center justify-content-center width-right mx-lg-0">
                 <div class="right mx-lg-0 mx-auto">
                     <div class="align-items-center justify-content-center d-lg-none d-flex">
-                        <img class="img-fluid" src="assets/images/Login.jpg"
-                            style="padding-bottom: 10px; padding-left: 10px; width: 150mm; height: auto; border-radius: 100px 30px 100px 30px; 
-
-                            alt="" />
                     </div>
 
                     <br>

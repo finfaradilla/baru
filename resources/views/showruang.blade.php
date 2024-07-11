@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".2s">
-                                            Kode Ruangan
+                                            Room code
                                         </p>
                                     </td>
                                     <td>
@@ -42,20 +42,14 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p class="wow fadeInUp" data-wow-delay=".2s">
-                                            Gedung
-                                        </p>
                                     </td>
                                     <td>
-                                        <p class="wow fadeInUp" data-wow-delay=".2s">
-                                            : {{ $room->building->name }}
-                                        </p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".2s">
-                                            Lantai
+                                            Floor
                                         </p>
                                     </td>
                                     <td>
@@ -67,7 +61,7 @@
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".2s">
-                                            Kapasitas
+                                            Capacity
                                         </p>
                                     </td>
                                     <td>
@@ -79,7 +73,7 @@
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".2s">
-                                            Tipe Ruangan
+                                            Room type
                                         </p>
                                     </td>
                                     <td>
@@ -91,7 +85,7 @@
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".2s">
-                                            Deskripsi
+                                            Description
                                         </p>
                                     </td>
                                     <td>
@@ -125,18 +119,17 @@
         <hr class="mt-75">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h3 class="wow fadeInUp" data-wow-delay=".4s">Form Pinjam Ruang {{ $room->name }}</h3>
-                <p class="wow fadeInUp" data-wow-delay=".4s">Isi form secara lengkap untuk meminjam ruangan</p>
+                <h3 class="wow fadeInUp" data-wow-delay=".4s">Form Reservation Room {{ $room->name }}</h3>
 
                 <form class="row g-3 mt-3 needs-validation wow fadeInUp" data-wow-delay=".4s" action="/daftarpinjam"
                     method="post">
                     @csrf
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <label for="room_id" class="form-label d-block">Kode Ruangan</label>
+                            <label for="room_id" class="form-label d-block">Room code</label>
                             <select class="form-select " aria-label="Default select example" name="room_id" id="room_id"
                                 required>
-                                <option selected disabled>Pilih Kode Ruangan</option>
+                                <option selected disabled>Choose room code</option>
                                 @foreach ($rooms as $room)
                                     @if ($room->code == request()->segment(count(request()->segments())))
                                         <option value="{{ $room->id }}" selected> {{ $room->name }}</option>
@@ -146,7 +139,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="purpose" class="form-label">Tujuan</label>
+                            <label for="purpose" class="form-label">Purpose</label>
                             <input type="text" class="form-control  @error('capacity') is-invalid @enderror"
                                 id="purpose" name="purpose" value="{{ old('purpose') }}" autocomplete="off" required>
                             @error('purpose')
@@ -158,20 +151,19 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <label for="time_start" class="form-label">Mulai Pinjam</label>
+                            <label for="time_start" class="form-label">Start time</label>
                             <input type="datetime-local" class="form-control" id="time_start_use" name="time_start_use"
                                 value="{{ old('time_start_use') }}" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="time_end" class="form-label">Selesai Pinjam</label>
+                            <label for="time_end" class="form-label">End time</label>
                             <input type="datetime-local" class="form-control" id="time_end_use" name="time_end_use"
                                 value="{{ old('time_end_use') }}" required>
                         </div>
                     </div>
 
                     <div class="col-12">
-                        <button class="btn btn-warning rounded-pill btn-hover fw-semibold text-white" type="submit">Pinjam
-                            Ruang</button>
+                        <button class="btn btn-warning rounded-pill btn-hover fw-semibold text-white" type="submit">Booking Room</button>
 
                     </div>
                 </form>
@@ -180,7 +172,7 @@
         </div>
 
         <hr class="mt-75">
-        <h3 class="mb-15 wow fadeInUp text-center" data-wow-delay=".4s">Daftar Peminjaman</h3>
+        <h3 class="mb-15 wow fadeInUp text-center" data-wow-delay=".4s">Booking List</h3>
         <!-- Table -->
         <div class="card-body text-end me-3 wow fadeInUp text-center" data-wow-delay=".4s">
             <div class="table-responsive justify-content-center">
@@ -191,12 +183,12 @@
                     <thead>
                         <tr>
                             <th scope="row">No.</th>
-                            <th scope="row">Nama Peminjam</th>
-                            <th scope="row">Mulai Pinjam</th>
-                            <th scope="row">Selesai Pinjam</th>
-                            <th scope="row">Tujuan</th>
-                            <th scope="row">Waktu Transaksi</th>
-                            <th scope="row">Status Pinjam</th>
+                            <th scope="row">Name</th>
+                            <th scope="row">Start time</th>
+                            <th scope="row">End time</th>
+                            <th scope="row">Purpose</th>
+                            <th scope="row">Duration</th>
+                            <th scope="row">Status</th>
                         </tr>
                     </thead>
                     <tbody class="rent-details">
@@ -216,7 +208,7 @@
                         @else
                             <tr>
                                 <td colspan="7" class="text-center">
-                                    -- Belum Ada Peminjaman --
+                                    -- No one has booked yet --
                                 </td>
                             </tr>
                         @endif

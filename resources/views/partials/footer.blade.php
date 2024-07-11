@@ -3,7 +3,7 @@
         <div class="footer-credit">
             <div class="row ">
                 <div class="col-md-6 ">
-                    <div class="footer-social">
+                    <!-- <div class="footer-social">
                         <ul class="d-flex justify-content-md-start justify-content-center">
                             <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
                             <li><a href="javascript:void(0)"><i class="lni lni-twitter-filled"></i></a></li>
@@ -18,7 +18,7 @@
                             <span>Developed by Pioneers Team </span>
                             {{-- <span>& Designed by UIdeck </span> --}}
                         </p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

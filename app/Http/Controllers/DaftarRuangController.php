@@ -14,7 +14,6 @@ class DaftarRuangController extends Controller
         return view('daftarruang', [
             'title' => "Daftar Ruang",
             'rooms' => Room::orderBy('created_at', 'desc')->paginate(6),
-            'buildings' => Building::all(),
         ]);  
     }
 
