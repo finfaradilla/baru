@@ -94,6 +94,14 @@
                                         </p>
                                     </td>
                                 </tr>
+                                <tr>
+                                <td><p class="wow fadeInUp" data-wow-delay=".2s">Items      </p></td>
+                                <td>
+                                <p class="wow fadeInUp" data-wow-delay=".2s">
+                                        : {{ $room->items->pluck('name')->implode(', ') }}
+                                    </p>
+                                </td>
+                            </tr>
                             </table>
                         </div>
                     </div>
@@ -161,7 +169,23 @@
                                 value="{{ old('time_end_use') }}" required>
                         </div>
                     </div>
-
+                    <div class="row mt-3">
+        <div class="col-md-12">
+            <label for="items" class="form-label">Select Items</label>
+            <div class="form-check">
+                @foreach ($rooms as $room)
+                    @foreach ($room->items as $item)
+                        @if ($item->available)
+                            <input class="form-check-input" type="checkbox" name="items[]" value="{{ $item->id }}" id="item{{ $item->id }}">
+                            <label class="form-check-label" for="item{{ $item->id }}">
+                                {{ $item->name }}
+                            </label><br>
+                        @endif
+                    @endforeach
+                @endforeach
+            </div>
+        </div>
+    </div>
                     <div class="col-12">
                         <button class="btn btn-warning rounded-pill btn-hover fw-semibold text-white" type="submit">Booking Room</button>
 

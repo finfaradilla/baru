@@ -22,7 +22,7 @@ class DashboardRoomController extends Controller
             'rooms' => Room::orderBy('created_at', 'desc')->paginate(10),
         ]);
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -51,6 +51,8 @@ class DashboardRoomController extends Controller
                 'capacity' => 'required',
                 'type' => 'required',
                 'description' => 'required|max:250',
+                'items' => 'array',
+                'items.*.name' => 'required|string',
             ]);
 
             if ($request->file('img')) {
@@ -59,8 +61,16 @@ class DashboardRoomController extends Controller
 
             $validatedData['status'] = false;
 
-            Room::create($validatedData);
+            // Room::create($validatedData);
 
+            $room = Room::create($validatedData);
+
+        if (!empty($validatedData['items'])) {
+            foreach ($validatedData['items'] as $item) {
+                $room->items()->create(['name' => $item]);
+            }
+        }
+            
             return redirect('/dashboard/rooms')->with('roomSuccess', 'Data ruangan berhasil ditambahkan');
         } catch (\Exception $e) {
             return redirect('/dashboard/rooms')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
@@ -71,7 +81,8 @@ class DashboardRoomController extends Controller
     {
         $imgPath = $request->file('img')->storeAs('public/assets/images/ruang/', $code . '.' . $request->file('img')->extension());
         return 'assets/images/ruang/' . basename($imgPath);
-    }    /**
+    }
+    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Room  $room
@@ -85,13 +96,14 @@ class DashboardRoomController extends Controller
             asset('img/ruang-kelas.jpeg'),
         ];
         $randomImage = $imageUrls[array_rand($imageUrls)];
+        $room->load('items');
 
         return view('dashboard.rooms.show', [
             'title' => $room->name,
             'room' => $room,
             'rooms' => Room::all(),
             'rents' => Rent::where('room_id', $room->id)->get(),
-            'randomImage' => $randomImage, 
+            'randomImage' => $randomImage,
         ]);
     }
 
@@ -126,35 +138,51 @@ class DashboardRoomController extends Controller
                 'capacity' => 'required',
                 'type' => 'required',
                 'description' => 'required|max:250',
+                'items' => 'array',
+                'items.*.name' => 'required|string',
             ];
-    
+
             if ($request->code != $room->code) {
                 $rules['code'] = 'required|max:20|unique:rooms';
             }
-    
+
             $validatedData = $request->validate($rules);
-    
+
             if ($request->file('img')) {
                 // Hapus gambar lama jika ada
                 if ($room->img && Storage::exists($room->img)) {
                     Storage::delete($room->img);
                 }
-    
+
                 // Unggah gambar baru
                 $imgPath = $request->file('img')->storeAs('public/assets/images/ruang/', $validatedData['code'] . '.' . $request->file('img')->extension());
                 $validatedData['img'] = 'assets/images/ruang/' . basename($imgPath);
             }
-    
+
             $validatedData['status'] = false;
+
+            $items = $validatedData['items'];
+            unset($validatedData['items']);
     
+            // Update the room data
             $room->update($validatedData);
     
+            // Delete existing items
+            $room->items()->delete();
+    
+            // Save new items
+            foreach ($items as $item) {
+                $room->items()->create([
+                    'name' => $item['name'],
+                ]);
+            }
+
             return redirect('/dashboard/rooms')->with('roomSuccess', 'Data ruangan berhasil diubah');
         } catch (\Exception $e) {
             return redirect('/dashboard/rooms')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *

@@ -72,6 +72,24 @@
                         <textarea name="description" id="description" cols="30" rows="5" class="form-control "
                             value="{{ old('description', $room->description) }}" required></textarea>
                     </div>
+                    <a href="https://www.traveloka.com" class="btn btn-secondary">Add Item</a>
+                    <div class="mb-3">
+                        <label for="items" class="form-label">Items</label>
+                        <div id="items-container">
+                            @foreach (old('items', $room->items) as $index => $item)
+                            <div class="item-group mb-2">
+                                <input type="text" class="form-control mb-2 @error('items.' . $index . '.name') is-invalid @enderror" name="items[{{ $index }}][name]" placeholder="Item Name" value="{{ old('items.' . $index . '.name', $item->name) }}" required>
+                                <button type="button" class="btn btn-danger remove-item">Remove</button>
+                                @error('items.' . $index . '.name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            @endforeach
+                        </div>
+                        <button type="button" class="btn btn-secondary mt-2" id="add-item">Add Item</button>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" id="editbtn" name="editbtn">Simpan</button>
@@ -82,3 +100,26 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const itemsContainer = document.getElementById('items-container');
+        const addItemButton = document.getElementById('add-item');
+
+        addItemButton.addEventListener('click', function() {
+            const index = itemsContainer.children.length;
+            const itemGroup = document.createElement('div');
+            itemGroup.classList.add('item-group', 'mb-2');
+            itemGroup.innerHTML = `
+                <input type="text" class="form-control mb-2" name="items[${index}][name]" placeholder="Item Name" required>
+                <button type="button" class="btn btn-danger remove-item">Remove</button>
+            `;
+            itemsContainer.appendChild(itemGroup);
+        });
+
+        itemsContainer.addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-item')) {
+                event.target.closest('.item-group').remove();
+            }
+        });
+    });
+</script>

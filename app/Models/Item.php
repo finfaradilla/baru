@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class Item extends Model
 {
     use HasFactory;
 
@@ -13,16 +13,11 @@ class Room extends Model
 
     public function room()
     {
-        return $this->hasMany(Rent::class);
+        return $this->belongsTo(Room::class);
     }
 
-    public function items()
+    public function rents()
     {
-        return $this->hasMany(Item::class);
-    }
-
-    public function getRouteKeyName()
-    {
-        return 'code';
+        return $this->belongsToMany(Rent::class, 'rent_item');
     }
 }

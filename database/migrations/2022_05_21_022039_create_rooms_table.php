@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('floor');
             $table->boolean('status');
             $table->integer('capacity');
-            $table->json('items')->nullable();
             $table->string('type');
             $table->longText('description');
             $table->timestamps();

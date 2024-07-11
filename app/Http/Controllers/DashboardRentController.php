@@ -19,7 +19,7 @@ class DashboardRentController extends Controller
             'adminRents' => Rent::latest()->paginate(10),
             'userRents' => Rent::where('user_id', auth()->user()->id)->get(),
             'title' => "Peminjaman",
-            'rooms' => Room::all(),
+            'rooms' => Room::with('items')->get(),
         ]);
     }
 
@@ -63,13 +63,18 @@ class DashboardRentController extends Controller
         'time_start_use' => 'required',
         'time_end_use' => 'required',
         'purpose' => 'required|max:250',
+        'items' => 'array'
     ]);
     $validatedData['user_id'] = auth()->user()->id;
     $validatedData['transaction_start'] = now();
     $validatedData['status'] = 'pending';
     $validatedData['transaction_end'] = null;
 
-    Rent::create($validatedData);
+    $rent = Rent::create($validatedData);
+
+        if ($request->has('items')) {
+            $rent->items()->attach($request->items);
+        }
 
     // Periksa peran pengguna
     if (auth()->user()->role_id === 1) {

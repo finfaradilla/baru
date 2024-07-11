@@ -76,13 +76,39 @@
                             </div>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="items" class="form-label">Items</label>
+                        <div id="items-container">
+                            <div class="input-group mb-2">
+                                <input type="text" class="form-control" name="items[]" placeholder="Item name">
+                                <button class="btn btn-danger" type="button" onclick="removeItemField(this)">Remove</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="button" onclick="addItemField()">Add Item</button>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
+
+<script>
+function addItemField() {
+    const container = document.getElementById('items-container');
+    const div = document.createElement('div');
+    div.classList.add('input-group', 'mb-2');
+    div.innerHTML = `
+        <input type="text" class="form-control" name="items[]" placeholder="Item name">
+        <button class="btn btn-danger" type="button" onclick="removeItemField(this)">Remove</button>
+    `;
+    container.appendChild(div);
+}
+
+function removeItemField(button) {
+    button.parentElement.remove();
+}
+</script>
