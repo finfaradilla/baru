@@ -28,7 +28,7 @@ body {
     font-family: "Poppins", sans-serif;
     font-weight: normal;
     font-style: normal;
-    color: #747e88;
+    color: #798874;
 }
 
 * {
@@ -84,7 +84,7 @@ h5,
 h6 {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    color: #283747;
+    color: #000000;
     margin: 0px;
 }
 
@@ -144,7 +144,7 @@ p {
     font-size: 16px;
     font-weight: 400;
     line-height: 26px;
-    color: #747e88;
+    color: #798874;
     margin: 0px;
 }
 
@@ -170,7 +170,7 @@ textarea {
     font-size: 16px;
     padding: 17px 30px;
     margin-bottom: 20px;
-    color: #868aaa;
+    color: #93aa86;
     -webkit-box-shadow: 0px 0px 51px rgba(180, 180, 180, 0.16);
     box-shadow: 0px 0px 51px rgba(180, 180, 180, 0.16);
     -webkit-transition: all 0.3s ease-out 0s;
@@ -200,13 +200,13 @@ textarea::placeholder {
 
 input:focus,
 textarea:focus {
-    border-color: #f2a92c;
+    border-color: #5d8e3b;
 }
 
 .back-to-top {
     width: 45px;
     height: 45px;
-    background: #f2a92c;
+    background: #5d8e3b;
     text-align: center;
     line-height: 45px;
     font-size: 20px;
@@ -250,7 +250,7 @@ textarea:focus {
     font-weight: 500;
     font-size: 15px;
     border-radius: 30px;
-    color: #283747;
+    color: #000000;
     cursor: pointer;
     z-index: 5;
     background: #fff;
@@ -259,7 +259,7 @@ textarea:focus {
 }
 
 .main-btn:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 .btn-hover {
@@ -389,7 +389,7 @@ textarea:focus {
     height: 100%;
     border-style: solid;
     /* Spinner Color */
-    border-color: #f2a92c #f2a92c #f9f9f9;
+    border-color: #5d8e3b #5d8e3b #f9f9f9;
     border-radius: 50%;
     border-width: 6px;
 }
@@ -1453,7 +1453,7 @@ textarea:focus {
     .navbar-nav .nav-item a {
         display: block;
         padding: 8px 0;
-        color: #283747;
+        color: #000000;
     }
 }
 
@@ -1461,19 +1461,19 @@ textarea:focus {
     .navbar-nav .nav-item a {
         display: block;
         padding: 6px 0;
-        color: #283747;
+        color: #000000;
     }
 }
 
 .navbar-nav .nav-item a.active,
 .navbar-nav .nav-item a:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 .navbar-nav .nav-item a.header-btn {
     padding: 12px 28px;
     border-radius: 30px;
-    background: #f2a92c;
+    background: #5d8e3b;
     color: #fff;
     display: inline-block;
 }
@@ -1498,7 +1498,7 @@ textarea:focus {
 
 .navbar-nav .nav-item .sub-menu {
     width: 200px;
-    background-color: #747e88;
+    background-color: #798874;
     -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
     position: absolute;
@@ -1539,13 +1539,13 @@ textarea:focus {
 .navbar-nav .nav-item .sub-menu li a {
     display: block;
     padding: 8px 20px;
-    color: #747e88;
+    color: #798874;
 }
 
 .navbar-nav .nav-item .sub-menu li a.active,
 .navbar-nav .nav-item .sub-menu li a:hover {
     padding-left: 25px;
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 .navbar-nav .sub-nav-toggler {
@@ -1594,20 +1594,20 @@ textarea:focus {
 }
 
 .sticky .navbar-toggler .toggler-icon {
-    background-color: #283747;
+    background-color: #000000;
 }
 
 .sticky .navbar-nav .nav-item a {
-    color: #283747;
+    color: #000000;
 }
 
 .sticky .navbar-nav .nav-item a::before {
-    background-color: #f2a92c;
+    background-color: #5d8e3b;
 }
 
 .sticky .navbar-nav .nav-item a.active,
 .sticky .navbar-nav .nav-item a:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 .sticky .navbar-nav .nav-item a.header-btn {
@@ -1618,7 +1618,7 @@ textarea:focus {
 hero area css
 ============================= */
 .hero-area {
-    background-image: url("../images/NW.jpg");
+    background-image: url("../images/AMYLA-11.jpg");
     position: relative;
     z-index: 1;
     padding: 280px 0 320px;
@@ -1661,7 +1661,7 @@ hero area css
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(40, 55, 71, 0.97);
+    background: rgba(41, 71, 40, 0.97);
     z-index: -1;
 }
 
@@ -1699,7 +1699,7 @@ hero area css
 }
 
 .hero-area .hero-content a.main-btn:hover {
-    background: #f2a92c;
+    background: #5d8e3b;
     color: #fff;
 }
 
@@ -1791,7 +1791,7 @@ skill css
 
 .skill-area .single-skill .skill-icon i {
     font-size: 40px;
-    color: #283747;
+    color: #000000;
 }
 
 .skill-area .single-skill .skill-content h4 {
@@ -1857,7 +1857,7 @@ course css
 }
 
 .course-area .single-course .course-info h4 a:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1901,7 +1901,7 @@ course css
 
 .course-area .single-course .course-info .course-meta .meta-item i {
     font-size: 13px;
-    color: #283747;
+    color: #000000;
     width: 28px;
     height: 28px;
     line-height: 26px;
@@ -1913,14 +1913,14 @@ course css
 
 .course-area .single-course .course-info .course-meta .meta-item span {
     font-size: 14px;
-    color: #283747;
+    color: #000000;
     margin-right: 10px;
 }
 
 .course-area .single-course .course-info .course-meta .price span {
     font-size: 16px;
     font-weight: 500;
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 .course-area .course-pagination .pagination li a {
@@ -1938,13 +1938,13 @@ course css
     align-items: center;
     margin: 0 10px;
     background: #fff;
-    color: #283747;
-    border-color: #f2a92c;
+    color: #000000;
+    border-color: #5d8e3b;
 }
 
 .course-area .course-pagination .pagination li a:hover {
     color: #fff;
-    background: #f2a92c;
+    background: #5d8e3b;
 }
 
 .course-area .single-course-wrapper .course-img img {
@@ -1957,7 +1957,7 @@ course css
 }
 
 .course-area .course-included ul li i {
-    color: #f2a92c;
+    color: #5d8e3b;
     margin-right: 10px;
     font-weight: 700;
 }
@@ -1974,7 +1974,7 @@ course css
     border: none;
     background: none;
     font-weight: 500;
-    color: #283747;
+    color: #000000;
     position: relative;
 }
 
@@ -2016,7 +2016,7 @@ course css
 }
 
 .course-area .right-sidebar .course-info ul li span.text-right {
-    color: #283747;
+    color: #000000;
 }
 
 .course-area .right-sidebar .course-info ul li span.text-right a {
@@ -2024,11 +2024,11 @@ course css
 }
 
 .course-area .right-sidebar .course-info ul li span.text-right a:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 .course-area .right-sidebar .course-info .main-btn {
-    background: #f2a92c;
+    background: #5d8e3b;
     color: #fff;
     border-radius: 4px;
     text-transform: uppercase;
@@ -2040,7 +2040,7 @@ course css
 }
 
 .course-area .right-sidebar .course-category ul li a {
-    color: #747e88;
+    color: #798874;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2050,11 +2050,11 @@ course css
 }
 
 .course-area .right-sidebar .course-category ul li a:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 .course-area .right-sidebar .course-category ul li a i {
-    color: #f2a92c;
+    color: #5d8e3b;
     font-size: 12px;
 }
 
@@ -2062,8 +2062,8 @@ course css
     font-size: 16px;
     font-weight: 500;
     padding: 16px 36px;
-    border: 2px solid #f2a92c;
-    color: #283747;
+    border: 2px solid #5d8e3b;
+    color: #000000;
 }
 
 /*============================
@@ -2083,9 +2083,9 @@ welcome css
 
 .welcome-area .welcome-content .content a {
     font-size: 18px;
-    color: #f2a92c;
+    color: #5d8e3b;
     line-height: 2;
-    border-bottom: 1.5px solid #f2a92c;
+    border-bottom: 1.5px solid #5d8e3b;
 }
 
 .welcome-area .welcome-content .content a i {
@@ -2121,7 +2121,7 @@ categories css
 
 .categories-area .category-wrapper .single-category i {
     font-size: 40px;
-    color: #283747;
+    color: #000000;
     margin-bottom: 30px;
 }
 
@@ -2217,7 +2217,7 @@ blog css
 }
 
 .blog-area .single-blog .blog-content h4 a:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2291,7 +2291,7 @@ contact css
     border-radius: 5px;
     margin-bottom: 20px;
     font-size: 16px;
-    color: #747e88;
+    color: #798874;
 }
 
 .contact-area .contact-form-wrapper form input::-webkit-input-placeholder,
@@ -2316,13 +2316,13 @@ contact css
 
 .contact-area .contact-form-wrapper form input:focus,
 .contact-area .contact-form-wrapper form textarea:focus {
-    border-color: #f2a92c;
+    border-color: #5d8e3b;
 }
 
 .contact-area .contact-form-wrapper form button {
     padding: 16px 40px;
     border-radius: 5px;
-    background: #f2a92c;
+    background: #5d8e3b;
     color: #fff;
 }
 
@@ -2350,7 +2350,7 @@ contact css
 }
 
 .page-banner .banner-content .breadcrumb li {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 .page-banner .banner-content .breadcrumb li::before {
@@ -2362,7 +2362,7 @@ contact css
 }
 
 .page-banner .banner-content .breadcrumb li a:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 /*============================
@@ -2385,17 +2385,17 @@ footer css
 .footer-area .footer-widget ul li a {
     font-size: 16px;
     line-height: 35px;
-    color: #747e88;
+    color: #798874;
 }
 
 .footer-area .footer-widget ul li a:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 
 .footer-area .footer-widget ul li p {
     font-size: 16px;
     line-height: 35px;
-    color: #747e88;
+    color: #798874;
 }
 
 .footer-area .footer-credit {
@@ -2426,11 +2426,11 @@ footer css
 }
 
 .footer-area .footer-credit .footer-social ul li a {
-    color: #747e88;
+    color: #798874;
     display: block;
 }
 
 .footer-area .footer-credit .footer-social ul li a:hover {
-    color: #f2a92c;
+    color: #5d8e3b;
 }
 /*# sourceMappingURL=style.css.map */

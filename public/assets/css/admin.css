@@ -93,7 +93,7 @@ aside #toggle-navbar {
     align-items: center;
 }
 .sidebar-item.active {
-    background: #4640de;
+    background: #29744d;
 }
 .sidebar-item.active span {
     color: #fff;

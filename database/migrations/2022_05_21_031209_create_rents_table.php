@@ -17,12 +17,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('room_id');
             $table->foreignId('user_id');
-            $table->dateTime('time_start_use');
-            $table->dateTime('time_end_use');
+                $table->dateTime('time_start_use');
+                $table->dateTime('time_end_use');
             $table->text('purpose');
+            $table->integer('number_of_pax'); 
+            $table->text('additional_request')->nullable();
             $table->dateTime('transaction_start');
             $table->dateTime('transaction_end')->nullable();
             $table->string('status');
+            $table->text('rejection_reason')->nullable();
             $table->timestamps();
         });
     }

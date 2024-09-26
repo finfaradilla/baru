@@ -11,7 +11,7 @@ class TemporaryRentController extends Controller
     public function index()
     {
         return view('dashboard.temporaryRents.index', [
-            'title' => "Daftar Peminjaman Sementara",
+            'title' => "Reservation List Temporer",
             'rents' => Rent::where('status', 'pending')->latest()->paginate(10),
         ]);
     }
@@ -19,7 +19,7 @@ class TemporaryRentController extends Controller
     public function acceptRents($id)
     {
         $rentStatus = [
-            'status' => 'dipinjam',
+            'status' => 'booked',
         ];
 
         $rent = Rent::where('id', $id)->update($rentStatus);
@@ -30,7 +30,7 @@ class TemporaryRentController extends Controller
     public function declineRents($id)
     {
         $rentStatus = [
-            'status' => 'ditolak',
+            'status' => 'rejected',
         ];
 
         Rent::where('id', $id)->update($rentStatus);

@@ -11,13 +11,15 @@ class Item extends Model
 
     protected $guarded = ['id'];
 
-    public function room()
-    {
-        return $this->belongsTo(Room::class);
-    }
-
     public function rents()
     {
         return $this->belongsToMany(Rent::class, 'rent_item');
     }
+
+    public function scopeAvailable($query)
+    {
+        return $query->where('available', true);
+    }
+
+
 }

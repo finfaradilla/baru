@@ -6,6 +6,7 @@ use App\Models\Room;
 use App\Models\Rent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 class DashboardRoomController extends Controller
@@ -18,11 +19,11 @@ class DashboardRoomController extends Controller
     public function index()
     {
         return view('dashboard.rooms.index', [
-            'title' => "Daftar Ruangan",
+            'title' => "Room List",
             'rooms' => Room::orderBy('created_at', 'desc')->paginate(10),
         ]);
     }
-
+    
 
     /**
      * Show the form for creating a new resource.
@@ -44,16 +45,15 @@ class DashboardRoomController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'code' => 'required|max:30|unique:rooms',
                 'name' => 'required',
                 'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'floor' => 'required',
                 'capacity' => 'required',
                 'type' => 'required',
                 'description' => 'required|max:250',
-                'items' => 'array',
-                'items.*.name' => 'required|string',
             ]);
+
+            $validatedData['code'] = 'RM' . strtoupper(Str::random(6));
 
             if ($request->file('img')) {
                 $validatedData['img'] = $this->uploadImage($request, $validatedData['code']);
@@ -61,17 +61,14 @@ class DashboardRoomController extends Controller
 
             $validatedData['status'] = false;
 
-            // Room::create($validatedData);
-
             $room = Room::create($validatedData);
-
-        if (!empty($validatedData['items'])) {
-            foreach ($validatedData['items'] as $item) {
-                $room->items()->create(['name' => $item]);
+            if ($request->has('items')) {
+            foreach ($request->items as $item) {
+                $room->items()->create(['name' => $item['name']]);
             }
         }
-            
-            return redirect('/dashboard/rooms')->with('roomSuccess', 'Data ruangan berhasil ditambahkan');
+
+            return redirect('/dashboard/rooms')->with('roomSuccess', 'Room added');
         } catch (\Exception $e) {
             return redirect('/dashboard/rooms')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
@@ -79,9 +76,15 @@ class DashboardRoomController extends Controller
 
     private function uploadImage($request, $code)
     {
-        $imgPath = $request->file('img')->storeAs('public/assets/images/ruang/', $code . '.' . $request->file('img')->extension());
-        return 'assets/images/ruang/' . basename($imgPath);
+        if ($request->file('img')) {
+            // Store the image in the public disk under 'assets/images/ruang'
+            $imgPath = $request->file('img')->storeAs('assets/images/ruang', $code . '.' . $request->file('img')->extension(), 'public');
+            return $imgPath;
+        }
+        return null;
     }
+    
+    
     /**
      * Display the specified resource.
      *
@@ -96,14 +99,13 @@ class DashboardRoomController extends Controller
             asset('img/ruang-kelas.jpeg'),
         ];
         $randomImage = $imageUrls[array_rand($imageUrls)];
-        $room->load('items');
 
         return view('dashboard.rooms.show', [
             'title' => $room->name,
             'room' => $room,
             'rooms' => Room::all(),
             'rents' => Rent::where('room_id', $room->id)->get(),
-            'randomImage' => $randomImage,
+            'randomImage' => $randomImage, 
         ]);
     }
 
@@ -131,6 +133,7 @@ class DashboardRoomController extends Controller
     public function update(Request $request, Room $room)
     {
         try {
+            // Validation rules
             $rules = [
                 'name' => 'required',
                 'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -138,51 +141,38 @@ class DashboardRoomController extends Controller
                 'capacity' => 'required',
                 'type' => 'required',
                 'description' => 'required|max:250',
-                'items' => 'array',
-                'items.*.name' => 'required|string',
             ];
-
+    
+            // If the code is being changed, add the code validation rule
             if ($request->code != $room->code) {
                 $rules['code'] = 'required|max:20|unique:rooms';
             }
-
+    
+            // Validate the request
             $validatedData = $request->validate($rules);
-
+    
+            // Handle file upload if a new image is uploaded
             if ($request->file('img')) {
-                // Hapus gambar lama jika ada
+                // Delete old image if it exists
                 if ($room->img && Storage::exists($room->img)) {
                     Storage::delete($room->img);
                 }
-
-                // Unggah gambar baru
-                $imgPath = $request->file('img')->storeAs('public/assets/images/ruang/', $validatedData['code'] . '.' . $request->file('img')->extension());
+    
+                // Upload the new image
+                $imgPath = $request->file('img')->storeAs('public/assets/images/ruang/', $room->code . '.' . $request->file('img')->extension());
                 $validatedData['img'] = 'assets/images/ruang/' . basename($imgPath);
             }
-
-            $validatedData['status'] = false;
-
-            $items = $validatedData['items'];
-            unset($validatedData['items']);
     
-            // Update the room data
+            // Update room data
             $room->update($validatedData);
     
-            // Delete existing items
-            $room->items()->delete();
-    
-            // Save new items
-            foreach ($items as $item) {
-                $room->items()->create([
-                    'name' => $item['name'],
-                ]);
-            }
-
-            return redirect('/dashboard/rooms')->with('roomSuccess', 'Data ruangan berhasil diubah');
+            return redirect('/dashboard/rooms')->with('roomSuccess', 'Room changed successfully');
         } catch (\Exception $e) {
-            return redirect('/dashboard/rooms')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect('/dashboard/rooms')->with('error', 'An error occurred: ' . $e->getMessage());
         }
     }
-
+    
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -192,6 +182,6 @@ class DashboardRoomController extends Controller
     public function destroy(Room $room)
     {
         Room::destroy($room->id);
-        return redirect('/dashboard/rooms')->with('deleteRoom', 'Data ruangan berhasil dihapus');
+        return redirect('/dashboard/rooms')->with('deleteRoom', 'Room deleted');
     }
 }

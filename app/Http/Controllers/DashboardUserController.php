@@ -16,7 +16,7 @@ class DashboardUserController extends Controller
     public function index()
     {
         return view('dashboard.users.index', [
-            'title' => 'Daftar Mahasiswa',
+            'title' => 'User List',
             'roles' => Role::all(),
             'users' => User::where('role_id', 2)->paginate(10),
         ]);
@@ -42,17 +42,17 @@ class DashboardUserController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
-            'nomor_induk' => 'required|min:8|unique:users,nomor_induk',
+            // 'nomor_induk' => 'required|min:8|unique:users,nomor_induk',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:4', 
-            'role_id' => 'required'
         ]);
     
         $validatedData['password'] = bcrypt($validatedData['password']);
+        $validatedData['role_id'] = 2;
     
         try {
             User::create($validatedData);
-            return redirect('/dashboard/users')->with('userSuccess', 'Data mahasiswa berhasil ditambahkan');
+            return redirect('/dashboard/users')->with('userSuccess', 'User added');
         } catch (\Exception $e) {
             return redirect('/dashboard/users')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
@@ -92,20 +92,20 @@ class DashboardUserController extends Controller
         $rules = [
             'name' => 'required|max:100',
             'email' => 'required|email',
-            'role_id' => 'required',
         ];
     
         // If the provided nomor_induk is different from the original one, add validation rule
-        if ($request->nomor_induk != $user->nomor_induk) {
-            $rules['nomor_induk'] = 'required|min:8|unique:users,nomor_induk';
-        }
+        // if ($request->nomor_induk != $user->nomor_induk) {
+        //     $rules['nomor_induk'] = 'required|min:8|unique:users,nomor_induk';
+        // }
     
         $validatedData = $request->validate($rules);
+        $validatedData['role_id'] = 2;
     
         // Update the user data
         $user->update($validatedData);
     
-        return redirect('/dashboard/users')->with('userSuccess', 'Data mahasiswa berhasil diubah');
+        return redirect('/dashboard/users')->with('userSuccess', 'User changed');
     }
     /**
      * Remove the specified resource from storage.
@@ -116,7 +116,7 @@ class DashboardUserController extends Controller
     public function destroy(User $user)
     {
         User::destroy($user->id);
-        return redirect('/dashboard/users')->with('deleteUser', 'Hapus data mahasiswa berhasil');
+        return redirect('/dashboard/users')->with('deleteUser', 'User deleted');
     }
 
     public function makeAdmin($id)
@@ -127,6 +127,6 @@ class DashboardUserController extends Controller
 
         User::where('id', $id)->update($userData);
 
-        return redirect('/dashboard/admin')->with('adminSuccess', 'Data admin berhasil ditambahkan');
+        return redirect('/dashboard/admin')->with('adminSuccess', 'Admin added');
     }
 }

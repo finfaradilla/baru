@@ -16,9 +16,9 @@ class Room extends Model
         return $this->hasMany(Rent::class);
     }
 
-    public function items()
+    public function rents()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Rent::class);
     }
 
     public function getRouteKeyName()

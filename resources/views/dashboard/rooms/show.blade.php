@@ -15,19 +15,7 @@
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".4s">
-                                            Gedung
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="wow fadeInUp" data-wow-delay=".4s">
-                                            : {{ $room->building->name }}
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p class="wow fadeInUp" data-wow-delay=".4s">
-                                            Lantai
+                                            Floor
                                         </p>
                                     </td>
                                     <td>
@@ -39,7 +27,7 @@
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".4s">
-                                            Kapasitas
+                                            Capacity
                                         </p>
                                     </td>
                                     <td>
@@ -51,7 +39,7 @@
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".4s">
-                                            Tipe Ruangan
+                                            Room Type
                                         </p>
                                     </td>
                                     <td>
@@ -63,7 +51,7 @@
                                 <tr>
                                     <td>
                                         <p class="wow fadeInUp" data-wow-delay=".4s">
-                                            Deskripsi
+                                            Description
                                         </p>
                                     </td>
                                     <td>
@@ -74,7 +62,7 @@
                                 </tr>
                             </table>
                             <button type="button" class="btn btn-primary read-more-btn wow fadeInUp mt-20"
-                                data-bs-toggle="modal" data-bs-target="#pinjamRuangan" data-wow-delay=".5s">Pinjam <i
+                                data-bs-toggle="modal" data-bs-target="#pinjamRuangan" data-wow-delay=".5s">Book Room <i
                                     class="lni lni-arrow-right"></i></button>
                         </div>
                     </div>
@@ -102,7 +90,7 @@
         </div>
 
 
-        <h2 class="content-title text-center" style="margin-top: 20px;">Daftar Peminjaman </h2>
+        <h2 class="content-title text-center" style="margin-top: 20px;">Booking List</h2>
         <!-- tambahkan content disini! -->
         <div class="card-body text-end me-3">
             <div class="table-responsive">
@@ -110,12 +98,12 @@
                     <thead class="table-info">
                         <tr>
                             <th scope="row">No.</th>
-                            <th scope="row">Nama Peminjam</th>
-                            <th scope="row">Mulai Pinjam</th>
-                            <th scope="row">Selesai Pinjam</th>
-                            <th scope="row">Tujuan</th>
-                            <th scope="row">Waktu Transaksi</th>
-                            <th scope="row">Status Pinjam</th>
+                            <th scope="row">User Name</th>
+                            <th scope="row">Start Time</th>
+                            <th scope="row">End Time</th>
+                            <th scope="row">Purpose</th>
+                            <th scope="row">Booking Time</th>
+                            <th scope="row">Status</th>
                         </tr>
                     </thead>
                     <tbody class="rent-details">
@@ -134,7 +122,7 @@
                         @else
                             <tr>
                                 <td colspan="7" class="text-center">
-                                    -- Belum Ada Daftar Peminjaman --
+                                    -- No room has booked yet --
                                 </td>
                             </tr>
                         @endif

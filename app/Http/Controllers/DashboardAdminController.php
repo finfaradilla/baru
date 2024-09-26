@@ -15,7 +15,7 @@ class DashboardAdminController extends Controller
     public function index()
     {
         return view('dashboard.admin.index', [
-            'title' => "Daftar Admin",
+            'title' => "Admin List",
             'admins' => User::where('role_id', 1)->get(),
             'users' => User::where('role_id', '<', 2)->get(),
         ]);
@@ -41,7 +41,7 @@ class DashboardAdminController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
-            'nomor_induk' => 'required|min:8|unique:users,nomor_induk',
+            // 'nomor_induk' => 'required|min:8|unique:users,nomor_induk',
             'email' => 'required|email',
             'password' => 'required|min:4'
         ]);
@@ -52,7 +52,7 @@ class DashboardAdminController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/dashboard/admin')->with('adminSuccess', 'Data admin berhasil ditambahkan');
+        return redirect('/dashboard/admin')->with('adminSuccess', 'Admin added successfully');
     }
 
     /**
@@ -92,16 +92,16 @@ public function update(Request $request, User $admin)
     ];
 
     // If the provided nomor_induk is different from the original one, add validation rule
-    if ($request->nomor_induk != $admin->nomor_induk) {
-        $rules['nomor_induk'] = 'required|min:8|unique:users,nomor_induk';
-    }
+    // if ($request->nomor_induk != $admin->nomor_induk) {
+    //     $rules['nomor_induk'] = 'required|min:8|unique:users,nomor_induk';
+    // }
 
     $validatedData = $request->validate($rules);
 
     // Update the admin data
     $admin->update($validatedData);
 
-    return redirect('/dashboard/admin')->with('adminSuccess', 'Data Admin berhasil diubah');
+    return redirect('/dashboard/admin')->with('adminSuccess', 'Admin changed successfully');
 }
 
     /**
@@ -113,7 +113,7 @@ public function update(Request $request, User $admin)
     public function destroy(User $admin)
     {
         $admin->delete();
-        return redirect('/dashboard/admin')->with('deleteAdmin', 'Hapus data admin berhasil');
+        return redirect('/dashboard/admin')->with('deleteAdmin', 'Admin deleted successfully');
     }
     
 

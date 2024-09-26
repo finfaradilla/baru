@@ -10,11 +10,11 @@
                     @csrf
                     <input type="hidden" name="room_id" id="room_id">
                     <div class="mb-3">
-                        <label for="room_id" class="form-label d-block">Kode Ruangan</label>
+                        <label for="room_id" class="form-label d-block">Room code</label>
                         <select class="form-select" aria-label="Default select example" name="room_id" id="room_id"
                             required>
                             @if (count(request()->segments()) < 3)
-                                <option selected disabled>Pilih Kode Ruangan</option>
+                                <option selected disabled>Choose Room Code</option>
                             @endif
                             @foreach ($rooms as $room)
                                 @if ($room->code == request()->segment(count(request()->segments())))
@@ -28,17 +28,17 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="time_start" class="form-label">Mulai Pinjam</label>
+                        <label for="time_start" class="form-label">Start Time</label>
                         <input type="datetime-local" class="form-control" id="time_start_use" name="time_start_use"
                             value="{{ old('time_start_use') }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="time_end" class="form-label">Selesai Pinjam</label>
+                        <label for="time_end" class="form-label">End Time</label>
                         <input type="datetime-local" class="form-control" id="time_end_use" name="time_end_use"
                             value="{{ old('time_end_use') }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="purpose" class="form-label">Tujuan</label>
+                        <label for="purpose" class="form-label">Purpose</label>
                         <input type="text" class="form-control  @error('capacity') is-invalid @enderror"
                             id="purpose" name="purpose" value="{{ old('purpose') }}" required>
                         @error('purpose')
@@ -49,7 +49,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
                     </div>
                 </form>
             </div>

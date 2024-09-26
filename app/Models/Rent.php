@@ -11,6 +11,11 @@ class Rent extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'time_start_use' => 'datetime',
+        'time_end_use' => 'datetime',
+    ];
+
     public function room()
     {
         return $this->belongsTo(Room::class);

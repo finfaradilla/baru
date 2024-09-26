@@ -11,13 +11,13 @@
                     <thead class="table-info">
                         <tr>
                             <th scope="row">No.</th>
-                            <th scope="row">Nama Ruangan</th>
-                            <th scope="row">Nama Peminjam</th>
-                            <th scope="row">Mulai Pinjam</th>
-                            <th scope="row">Selesai Pinjam</th>
-                            <th scope="row">Tujuan</th>
-                            <th scope="row">Mulai Transaksi</th>
-                            <th scope="row">Status Pinjam</th>
+                            <th scope="row">Room Name</th>
+                            <th scope="row">Name</th>
+                            <th scope="row">Start Book</th>
+                            <th scope="row">End Book</th>
+                            <th scope="row">Purpose</th>
+                            <th scope="row">Transaction Time</th>
+                            <th scope="row">Status</th>
                             <th scope="row">Action</th>
                         </tr>
                     </thead>
@@ -51,7 +51,7 @@
                         @else
                             <tr>
                                 <td colspan="9" class="text-center">
-                                    -- Belum Ada Daftar Peminjam --
+                                    -- No one booked yet --
                                 </td>
                             </tr>
                         @endif

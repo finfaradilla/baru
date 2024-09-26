@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="col-md-10 p-0">
-        <h2 class="content-title text-center">Daftar {{ $title }}</h2>
+        <h2 class="content-title text-center">List {{ $title }}</h2>
         <div class="card-body text-end">
             @if (session()->has('roomSuccess'))
                 <div class="col-md-16 mx-auto alert alert-success text-center  alert-success alert-dismissible fade show"
@@ -13,18 +13,18 @@
             @endif
             <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal"
                 data-bs-target="#pinjamRuangan">
-                Pinjam
+                Book
             </button>
             <button type="button" class="mb-3 btn button btn-primary" data-bs-toggle="modal" data-bs-target="#addRoom">
-                Tambah Ruangan
+                Add Room
             </button>
             <div class="table-responsive">
                 <table class="table table-hover table-stripped table-bordered text-center dt-head-center" id="datatable">
                     <thead class="table-info">
                         <tr>
                             <th scope="row">No.</th>
-                            <th scope="row">Nama Ruangan</th>
-                            <th scope="row">Kode Ruangan</th>
+                            <th scope="row">Room Name</th>
+                            <th scope="row">Room Code</th>
                             <th scope="row">Action</th>
                         </tr>
                     </thead>

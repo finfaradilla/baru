@@ -33,12 +33,12 @@
         </li>
     @endauth --}}
 
-    <div class="d-flex justify-content-between align-items-center nav-input-container">
+    <!-- <div class="d-flex justify-content-between align-items-center nav-input-container">
         <div class="nav-input-group">
             <input type="text" class="nav-input" placeholder="Search people, team, project">
             <button class="btn-nav-input"><img src="/assets/search.svg" alt=""></button>
         </div>
 
         <button class="btn-notif d-none d-md-block"><img src="/assets/bell.svg" alt=""></button>
-    </div>
+    </div> -->
 </div>

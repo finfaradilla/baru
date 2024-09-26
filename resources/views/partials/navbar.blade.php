@@ -18,19 +18,19 @@
                          <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                              <ul id="nav" class="navbar-nav ml-auto">
                                  <li class="nav-item">
-                                     <a href="/" class="text-warning">Home</a>
+                                     <a href="/" class="text">Home</a>
                                  </li>
                                  @auth
                                      <li class="nav-item">
-                                         <a href="/daftarruang" class="text-warning">Room List</a>
+                                         <a href="/daftarruang" class="text">Room List</a>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="/daftarpinjam" class="text-warning">Booking List</a>
+                                         <a href="/daftarpinjam" class="text">Booking List</a>
                                      </li>
                                      <form action="/logout" method="post">
                                          @csrf
                                          <button type="submit"
-                                             class="btn border border-warning rounded-pill text-warning "><i
+                                             class="btn border border-dark rounded-pill text-dark "><i
                                                  class="bi bi-box-arrow-right"></i>
                                              Logout</button>
                                      </form>

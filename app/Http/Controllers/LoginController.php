@@ -49,7 +49,7 @@ class LoginController extends Controller
             }
         }
     
-        return back()->with('loginError', 'Masukkan Email & Password Dengan Benar');
+        return back()->with('loginError', 'Input username and password correctly');
     }
     
 
